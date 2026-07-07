@@ -1,1633 +1,951 @@
 <!DOCTYPE html>
-<html lang="zh-Hant-TW">
+<html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>細胞膜物質運輸解密特訓營 - 九年級生物複習</title>
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- FontAwesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
-    body {
-      font-family: 'Noto Sans TC', sans-serif;
-    }
-    .scrollbar-hidden::-webkit-scrollbar {
-      display: none;
-    }
-    .scrollbar-hidden {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九年級生物：酵素複習與迷思挑戰</title>
+    <!-- 引入 Tailwind CSS 提供現代化、美觀且響應式的 UI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f0fdf4; /* 舒緩的粉綠色背景，符合生物科感 */
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.1), 0 8px 10px -6px rgba(16, 185, 129, 0.1);
+        }
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.5; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(0.95); opacity: 0.5; }
+        }
+        .animate-pulse-ring {
+            animation: pulse-ring 2s infinite ease-in-out;
+        }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col selection:bg-teal-500 selection:text-white">
+<body class="min-h-screen text-slate-800 pb-16">
 
-  <!-- Header Section -->
-  <header class="bg-gradient-to-r from-teal-600 via-cyan-600 to-indigo-700 text-white shadow-md relative overflow-hidden">
-    <!-- Background subtle shapes -->
-    <div class="absolute inset-0 opacity-10">
-      <div class="absolute -top-10 -left-10 w-40 h-40 rounded-full bg-white blur-xl"></div>
-      <div class="absolute bottom-5 right-10 w-60 h-60 rounded-full bg-white blur-2xl"></div>
-    </div>
-    
-    <div class="max-w-6xl mx-auto px-4 py-6 md:py-8 relative z-10 flex flex-col md:flex-row justify-between items-center gap-4">
-      <div>
-        <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold mb-2 tracking-wider">
-          <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-          國中生物會考與段考複習
+    <!-- 頁首標題 -->
+    <header class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white py-8 px-4 text-center shadow-lg relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <!-- 背景細胞/酵素裝飾 -->
+            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M20,0 Q30,10 20,20 Q10,30 20,40" fill="none" stroke="white" stroke-width="1.5"/>
+                        <circle cx="20" cy="20" r="2" fill="white"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#pattern)"/>
+            </svg>
         </div>
-        <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight">細胞膜物質運輸 <span class="text-teal-200">解密特訓營</span></h1>
-        <p class="text-sm md:text-base text-cyan-100 mt-1">用最簡單的「直接穿透」與「走蛋白質通道」觀念，5分鐘釐清必考盲點！</p>
-      </div>
-      <div class="flex gap-2 bg-white/10 backdrop-blur-md p-1.5 rounded-xl border border-white/10">
-        <button id="soundToggleBtn" onclick="toggleSound()" class="px-3 py-2 rounded-lg hover:bg-white/15 transition flex items-center gap-2 text-sm font-medium" title="切換音效">
-          <i class="fas id-sound-icon fa-volume-up text-teal-300"></i>
-          <span>音效: 開</span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Navigation Tabs -->
-  <div class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
-    <div class="max-w-6xl mx-auto px-4 flex overflow-x-auto scrollbar-hidden">
-      <button onclick="switchTab('simulator')" id="tab-simulator" class="tab-btn px-5 py-4 border-b-2 border-teal-600 font-bold text-teal-600 text-sm md:text-base whitespace-nowrap flex items-center gap-2 transition">
-        <i class="fas fa-vial"></i> 觀念探索模擬器
-      </button>
-      <button onclick="switchTab('sorting')" id="tab-sorting" class="tab-btn px-5 py-4 border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-semibold text-sm md:text-base whitespace-nowrap flex items-center gap-2 transition">
-        <i class="fas fa-boxes-stacked"></i> 物質分類大挑戰
-      </button>
-      <button onclick="switchTab('quiz')" id="tab-quiz" class="tab-btn px-5 py-4 border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-semibold text-sm md:text-base whitespace-nowrap flex items-center gap-2 transition">
-        <i class="fas fa-clipboard-question"></i> 觀念簡單測驗
-      </button>
-      <button onclick="switchTab('certificate')" id="tab-certificate" class="tab-btn px-5 py-4 border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-semibold text-sm md:text-base whitespace-nowrap flex items-center gap-2 transition">
-        <i class="fas fa-certificate"></i> 成果雷達與證書
-      </button>
-    </div>
-  </div>
-
-  <!-- Main Content Area -->
-  <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-6 md:py-8">
-
-    <!-- TAB 1: SIMULATOR -->
-    <div id="panel-simulator" class="tab-panel space-y-6">
-      
-      <!-- Top Guide -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div class="lg:col-span-2 bg-white rounded-2xl p-4 md:p-6 shadow-sm border border-slate-100 flex flex-col">
-          <div class="flex justify-between items-center mb-4">
-            <h2 class="text-lg md:text-xl font-bold flex items-center gap-2 text-slate-800">
-              <span class="w-2.5 h-6 bg-teal-500 rounded-full"></span>
-              細胞膜物質進出模擬
-            </h2>
-            <div class="flex items-center gap-2 text-xs bg-teal-50 text-teal-700 font-medium px-2.5 py-1 rounded-full">
-              <i class="fas fa-circle-info"></i> 點擊下方分子按鈕投放，看它們怎麼過膜
-            </div>
-          </div>
-          
-          <!-- Canvas Container -->
-          <div class="relative bg-slate-900 rounded-xl overflow-hidden aspect-[16/9] min-h-[300px] border border-slate-800 shadow-inner">
-            <canvas id="membraneCanvas" class="w-full h-full block cursor-crosshair"></canvas>
-            
-            <!-- Dynamic Labels overlay -->
-            <div class="absolute top-3 left-4 pointer-events-none bg-slate-900/80 backdrop-blur-sm px-2.5 py-1 rounded text-xs text-slate-400 border border-slate-800 font-bold">
-              細胞外 (濃度高)
-            </div>
-            <div class="absolute bottom-3 left-4 pointer-events-none bg-slate-900/80 backdrop-blur-sm px-2.5 py-1 rounded text-xs text-slate-400 border border-slate-800 font-bold">
-              細胞內 (濃度低)
-            </div>
-            <div class="absolute top-[43%] right-4 pointer-events-none bg-slate-900/80 backdrop-blur-sm px-2.5 py-1 rounded text-xs text-slate-400 border border-slate-800 font-bold">
-              細胞膜
-            </div>
-            
-            <!-- Dynamic Info Panel in Canvas -->
-            <div id="canvasTooltip" class="absolute hidden bg-slate-900/95 border border-teal-500/30 text-white rounded-lg p-3 text-xs shadow-xl max-w-[200px] pointer-events-none z-10">
-              <h4 class="font-bold text-teal-400 text-sm mb-1" id="tooltipTitle">分子</h4>
-              <p class="text-slate-300 leading-relaxed" id="tooltipDesc">說明文字</p>
-            </div>
-          </div>
-          
-          <!-- Simulation Controls -->
-          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 mt-4">
-            <button onclick="spawnMolecule('starch')" class="flex flex-col items-center justify-center p-2 rounded-xl border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition active:scale-95">
-              <span class="w-4 h-4 rounded-full bg-amber-600 mb-1 inline-block"></span>
-              <span class="text-xs font-bold text-slate-700">澱粉 (大)</span>
-            </button>
-            <button onclick="spawnMolecule('protein')" class="flex flex-col items-center justify-center p-2 rounded-xl border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition active:scale-95">
-              <span class="w-4 h-4 bg-sky-400 mb-1 inline-block rotate-45"></span>
-              <span class="text-xs font-bold text-slate-700">蛋白質 (大)</span>
-            </button>
-            <button onclick="spawnMolecule('glucose')" class="flex flex-col items-center justify-center p-2 rounded-xl border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition active:scale-95">
-              <span class="w-4 h-4 bg-orange-500 mb-1 inline-block" style="clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);"></span>
-              <span class="text-xs font-bold text-slate-700">葡萄糖 (小)</span>
-            </button>
-            <button onclick="spawnMolecule('water')" class="flex flex-col items-center justify-center p-2 rounded-xl border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition active:scale-95">
-              <span class="w-4 h-4 rounded-full bg-teal-400 mb-1 inline-block"></span>
-              <span class="text-xs font-bold text-slate-700">水分子 (特小)</span>
-            </button>
-            <button onclick="spawnMolecule('gas')" class="flex flex-col items-center justify-center p-2 rounded-xl border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition active:scale-95">
-              <span class="w-4 h-4 rounded-full bg-red-500 mb-1 inline-block"></span>
-              <span class="text-xs font-bold text-slate-700">氧/二氧化碳</span>
-            </button>
-          </div>
-          
-          <div class="flex flex-wrap gap-2 mt-3 pt-3 border-t border-slate-100 justify-between items-center text-sm text-slate-500">
-            <div class="flex items-center gap-4">
-              <label class="flex items-center gap-1.5 cursor-pointer select-none">
-                <input type="checkbox" id="showBilayer" checked class="rounded border-slate-300 text-teal-600 focus:ring-teal-500">
-                顯示脂質膜結構
-              </label>
-              <label class="flex items-center gap-1.5 cursor-pointer select-none">
-                <input type="checkbox" id="showGradient" checked class="rounded border-slate-300 text-teal-600 focus:ring-teal-500">
-                顯示濃度漸層
-              </label>
-            </div>
-            <button onclick="clearCanvasParticles()" class="px-4 py-1.5 rounded-lg border border-red-200 text-red-600 hover:bg-red-50 transition flex items-center gap-1.5 text-xs font-semibold">
-              <i class="fas fa-trash-can"></i> 清除全部粒子
-            </button>
-          </div>
-        </div>
-        
-        <!-- Interactive Sidebar Info -->
-        <div class="space-y-4">
-          <!-- Live Explanation panel -->
-          <div class="bg-gradient-to-br from-indigo-900 to-slate-900 text-white rounded-2xl p-5 shadow-md border border-indigo-950/50 flex flex-col justify-between h-full">
-            <div>
-              <div class="flex items-center gap-2 text-indigo-400 text-xs font-bold uppercase tracking-wider mb-2">
-                <i class="fas fa-graduation-cap"></i> 觀念重點卡
-              </div>
-              <h3 class="text-xl font-bold mb-3 text-cyan-200">物質進出細胞膜規則</h3>
-              <ul class="space-y-4 text-xs md:text-sm text-slate-300 leading-relaxed">
-                <li class="flex items-start gap-2.5">
-                  <span class="flex-shrink-0 w-5 h-5 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center font-bold text-xs mt-0.5">1</span>
-                  <div>
-                    <strong class="text-white text-sm">大分子不能過：</strong>
-                    澱粉、蛋白質太大了，**無法通過**細胞膜。必須先分解成小分子（葡萄糖、胺基酸）才能進出。
-                  </div>
-                </li>
-                <li class="flex items-start gap-2.5">
-                  <span class="flex-shrink-0 w-5 h-5 rounded-full bg-red-500/20 text-red-300 flex items-center justify-center font-bold text-xs mt-0.5">2</span>
-                  <div>
-                    <strong class="text-white text-sm">直接穿透細胞膜：</strong>
-                    氧氣、二氧化碳和水分子非常小，可以直接穿透脂質細胞膜，由濃度高的地方往低的地方擴散（擴散作用）。
-                  </div>
-                </li>
-                <li class="flex items-start gap-2.5">
-                  <span class="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-300 flex items-center justify-center font-bold text-xs mt-0.5">3</span>
-                  <div>
-                    <strong class="text-white text-sm">走蛋白質通道：</strong>
-                    葡萄糖、胺基酸、礦物質以及水分子，必須靠膜上的**特殊蛋白質通道**，順著濃度差（高 $\rightarrow$ 低）進出。
-                  </div>
-                </li>
-              </ul>
-            </div>
-            
-            <div class="bg-indigo-950/50 rounded-xl p-3 border border-indigo-800/30 mt-4">
-              <span class="text-[11px] font-bold text-teal-400 block mb-1 uppercase tracking-wide">💡 考試最愛考</span>
-              <p class="text-xs text-slate-400 leading-relaxed">
-                **水分子非常特殊！** 它既可以「直接穿透」細胞膜，也可以「走蛋白質通道（水通道）」快速進出喔！
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Quick Concept Check Widget -->
-      <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
-        <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
-          <i class="fas fa-lightbulb text-amber-500"></i>
-          觀察提示與互動任務
-        </h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div class="p-4 rounded-xl bg-amber-50 border border-amber-100 text-xs md:text-sm">
-            <h4 class="font-bold text-amber-800 flex items-center gap-1.5 mb-1">
-              <i class="fas fa-cookie-bite"></i> 任務一：觀察大分子
-            </h4>
-            <p class="text-slate-600 leading-relaxed">
-              點擊「澱粉」與「蛋白質」。看它們碰到細胞膜是不是會被彈開？（澱粉被彈開幾次後會自動分解成葡萄糖喔！）
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <span class="bg-emerald-500/30 text-emerald-100 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">九年級會考生物複習</span>
+            <h1 class="text-3xl md:text-4xl font-black mt-2 tracking-wide drop-shadow-md">🧬 酵素與代謝作用：全功能複習站</h1>
+            <p class="text-xs md:text-base text-emerald-100/90 mt-2 max-w-xl mx-auto">
+                結合「動態操作實驗室」、「一題一頁 4選1 迷思檢測」與「重點整理對照表」，徹底釐清你的觀念盲點！
             </p>
-          </div>
-          <div class="p-4 rounded-xl bg-teal-50 border border-teal-100 text-xs md:text-sm">
-            <h4 class="font-bold text-teal-800 flex items-center gap-1.5 mb-1">
-              <i class="fas fa-droplet"></i> 任務二：找找水分子的雙重管道
-            </h4>
-            <p class="text-slate-600 leading-relaxed">
-              點擊「水分子」，你會發現有些會直接穿透膜，有些會走綠色的蛋白質通道（水通道），走通道的速度快非常多！
-            </p>
-          </div>
-          <div class="p-4 rounded-xl bg-indigo-50 border border-indigo-100 text-xs md:text-sm">
-            <h4 class="font-bold text-indigo-800 flex items-center gap-1.5 mb-1">
-              <i class="fas fa-key"></i> 任務三：蛋白質通道的專一性
-            </h4>
-            <p class="text-slate-600 leading-relaxed">
-              點選「葡萄糖」，你會發現它**只能**走橘色的蛋白質通道，碰到其他顏色的通道或普通膜面會被彈開。
-            </p>
-          </div>
         </div>
-      </div>
-    </div>
+    </header>
 
-    <!-- TAB 2: SORTING GAME -->
-    <div id="panel-sorting" class="tab-panel hidden space-y-6">
-      <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
-        <div class="max-w-3xl mx-auto text-center mb-8">
-          <h2 class="text-2xl font-black text-slate-800 tracking-tight">物質進出細胞膜分類大挑戰</h2>
-          <p class="text-slate-500 text-sm mt-1">請點選左側待分類的物質，然後點選右側正確的通道框。把所有物質正確歸位吧！</p>
-          
-          <!-- Progress bar -->
-          <div class="w-full bg-slate-100 rounded-full h-2 mt-4 relative overflow-hidden">
-            <div id="sortingProgress" class="bg-gradient-to-r from-teal-500 to-indigo-500 h-full transition-all duration-300 w-0"></div>
-          </div>
-          <div class="flex justify-between items-center text-xs text-slate-400 mt-1">
-            <span id="sortingCounter">已分類: 0 / 8</span>
-            <span id="sortingScore">正確率: 0%</span>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
-          
-          <!-- Substances Pool (To be sorted) -->
-          <div class="lg:col-span-1 bg-slate-50 rounded-xl p-4 border border-slate-200">
-            <h3 class="text-sm font-bold text-slate-600 mb-3 flex items-center gap-1.5">
-              <i class="fas fa-wand-magic-sparkles text-teal-600"></i>
-              待分類的物質
-            </h3>
-            <div id="sortingItemsContainer" class="flex flex-row lg:flex-col flex-wrap gap-2">
-              <!-- Item Cards dynamically inserted here -->
-            </div>
-          </div>
-
-          <!-- Target Categories -->
-          <div class="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-4">
-            
-            <!-- Category A: Cannot pass directly -->
-            <div id="category-A" onclick="assignToCategory('A')" class="category-zone border-2 border-dashed border-slate-300 rounded-xl p-4 flex flex-col justify-between hover:border-amber-400 hover:bg-amber-50/20 transition cursor-pointer group">
-              <div>
-                <div class="flex items-center justify-between mb-3">
-                  <span class="text-xs font-extrabold text-amber-700 bg-amber-100 px-2 py-0.5 rounded uppercase tracking-wide">方式 A</span>
-                  <span class="text-xs text-slate-400 group-hover:text-amber-600 font-bold transition">點此歸類 <i class="fas fa-arrow-right"></i></span>
-                </div>
-                <h4 class="font-bold text-slate-800 text-base">無法直接通過細胞膜</h4>
-                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
-                  分子太巨大了！必須在細胞外**先被消化分解**成小分子後才能進出。
-                </p>
-              </div>
-              <div id="cat-list-A" class="mt-4 space-y-2 min-h-[100px] bg-white/40 rounded-lg p-2 border border-slate-100">
-                <!-- Sorted cards here -->
-              </div>
-            </div>
-
-            <!-- Category B: Simple Diffusion -->
-            <div id="category-B" onclick="assignToCategory('B')" class="category-zone border-2 border-dashed border-slate-300 rounded-xl p-4 flex flex-col justify-between hover:border-indigo-400 hover:bg-indigo-50/20 transition cursor-pointer group">
-              <div>
-                <div class="flex items-center justify-between mb-3">
-                  <span class="text-xs font-extrabold text-indigo-700 bg-indigo-100 px-2 py-0.5 rounded uppercase tracking-wide">方式 B</span>
-                  <span class="text-xs text-slate-400 group-hover:text-indigo-600 font-bold transition">點此歸類 <i class="fas fa-arrow-right"></i></span>
-                </div>
-                <h4 class="font-bold text-slate-800 text-base">直接穿透細胞膜</h4>
-                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
-                  分子極小，可以**直接穿過**脂質膜構造，由高濃度往低濃度擴散。
-                </p>
-              </div>
-              <div id="cat-list-B" class="mt-4 space-y-2 min-h-[100px] bg-white/40 rounded-lg p-2 border border-slate-100">
-                <!-- Sorted cards here -->
-              </div>
-            </div>
-
-            <!-- Category C: Facilitated Diffusion -->
-            <div id="category-C" onclick="assignToCategory('C')" class="category-zone border-2 border-dashed border-slate-300 rounded-xl p-4 flex flex-col justify-between hover:border-emerald-400 hover:bg-emerald-50/20 transition cursor-pointer group">
-              <div>
-                <div class="flex items-center justify-between mb-3">
-                  <span class="text-xs font-extrabold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded uppercase tracking-wide">方式 C</span>
-                  <span class="text-xs text-slate-400 group-hover:text-emerald-600 font-bold transition">點此歸類 <i class="fas fa-arrow-right"></i></span>
-                </div>
-                <h4 class="font-bold text-slate-800 text-base">走特殊蛋白質通道</h4>
-                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
-                  雖然是小分子，但需要膜上的**通道或載體蛋白質**協助才能通過。
-                </p>
-              </div>
-              <div id="cat-list-C" class="mt-4 space-y-2 min-h-[100px] bg-white/40 rounded-lg p-2 border border-slate-100">
-                <!-- Sorted cards here -->
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p class="text-xs md:text-sm text-slate-500 italic">
-            * 貼心小提醒：**水分子很特別**，它可以直接穿透膜，也可以走水通道蛋白，你可以把它歸在多個分類中喔！
-          </p>
-          <div class="flex gap-2">
-            <button onclick="resetSortingGame()" class="px-4 py-2 text-sm font-semibold border border-slate-200 hover:border-slate-300 rounded-xl transition text-slate-700">
-              重新開始遊戲
+    <!-- 分頁導覽 Tab 控制 -->
+    <div class="max-w-5xl mx-auto px-4 mt-6">
+        <div class="flex bg-white rounded-2xl p-1.5 shadow-md custom-shadow border border-emerald-100">
+            <button onclick="switchTab('lab')" id="tab-lab" class="tab-btn flex-1 py-3 text-center rounded-xl font-bold text-sm md:text-base transition-all duration-300 flex items-center justify-center gap-2 bg-emerald-600 text-white">
+                🧪 互動操作實驗室
             </button>
-            <button onclick="verifySortingGame()" class="px-5 py-2 text-sm font-bold bg-teal-600 hover:bg-teal-700 text-white rounded-xl shadow-sm transition active:scale-95">
-              送出答案檢查
+            <button onclick="switchTab('quiz')" id="tab-quiz" class="tab-btn flex-1 py-3 text-center rounded-xl font-bold text-sm md:text-base transition-all duration-300 flex items-center justify-center gap-2 text-slate-600 hover:bg-emerald-50">
+                ✏️ 單題四選一檢測
             </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- TAB 3: QUIZ -->
-    <div id="panel-quiz" class="tab-panel hidden space-y-6">
-      <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 max-w-3xl mx-auto">
-        
-        <!-- Quiz Intro & Progress -->
-        <div id="quiz-intro" class="text-center py-6">
-          <div class="w-16 h-16 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center text-2xl mx-auto mb-4 shadow-inner">
-            <i class="fas fa-graduation-cap"></i>
-          </div>
-          <h2 class="text-2xl font-black text-slate-800">細胞膜運輸觀念簡單測驗</h2>
-          <p class="text-slate-500 text-sm mt-2 max-w-md mx-auto leading-relaxed">
-            精選 8 題最常考的細胞膜觀念基礎題，幫你快速掃描盲點，拿滿段考與會考分數！
-          </p>
-          <button onclick="startQuiz()" class="mt-6 px-8 py-3 bg-gradient-to-r from-teal-600 to-indigo-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition active:scale-95 text-base">
-            開始挑戰 (共 8 題)
-          </button>
-        </div>
-
-        <!-- Quiz Play Panel (Hidden by default) -->
-        <div id="quiz-play" class="hidden">
-          <div class="flex justify-between items-center text-xs text-slate-400 mb-2">
-            <span id="quiz-progress-text">問題 1 / 8</span>
-            <span id="quiz-score-badge" class="bg-slate-100 px-2 py-0.5 rounded font-bold text-slate-600">目前得分: 0 分</span>
-          </div>
-          <!-- Progress bar -->
-          <div class="w-full bg-slate-100 rounded-full h-1.5 mb-6 overflow-hidden">
-            <div id="quiz-progress-bar" class="bg-teal-500 h-full transition-all duration-300 w-0"></div>
-          </div>
-
-          <!-- Question Text -->
-          <div class="mb-6">
-            <div class="inline-flex bg-teal-50 text-teal-700 text-xs font-bold px-2.5 py-1 rounded-full mb-2">
-              觀念診斷題
-            </div>
-            <h3 id="quiz-question-text" class="text-lg md:text-xl font-bold text-slate-800 leading-snug">
-              載入問題中...
-            </h3>
-          </div>
-
-          <!-- Options -->
-          <div id="quiz-options-container" class="space-y-3">
-            <!-- Options buttons dynamically inserted here -->
-          </div>
-
-          <!-- Explanation Panel (Hidden until answered) -->
-          <div id="quiz-explanation-panel" class="hidden mt-6 p-4 rounded-xl border transition-all duration-300">
-            <div class="flex items-center gap-2 mb-2">
-              <span id="explanation-status-icon" class="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold"></span>
-              <h4 id="explanation-title" class="font-bold text-base">解答狀態</h4>
-            </div>
-            <p id="explanation-text" class="text-sm text-slate-600 leading-relaxed pl-8">
-              詳細解析載入中...
-            </p>
-            <div class="mt-4 flex justify-end">
-              <button onclick="nextQuestion()" id="next-quest-btn" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold rounded-xl shadow transition">
-                下一題 <i class="fas fa-arrow-right ml-1"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- TAB 4: CERTIFICATE -->
-    <div id="panel-certificate" class="tab-panel hidden space-y-6">
-      
-      <!-- Report Overview Card -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        
-        <!-- Performance breakdown -->
-        <div class="lg:col-span-1 bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex flex-col justify-between">
-          <div>
-            <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
-              <span class="w-2.5 h-6 bg-indigo-500 rounded-full"></span>
-              知識維度診斷
-            </h3>
-            
-            <p class="text-slate-500 text-xs mb-6">
-              分析你在細胞膜物質運輸中的四個核心概念掌握度：
-            </p>
-            
-            <div class="space-y-4">
-              <div>
-                <div class="flex justify-between text-xs font-bold mb-1">
-                  <span class="text-slate-600">1. 大分子分解觀念</span>
-                  <span id="scoreDim1" class="text-teal-600">0%</span>
-                </div>
-                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                  <div id="barDim1" class="bg-teal-500 h-full w-0 transition-all duration-1000"></div>
-                </div>
-              </div>
-
-              <div>
-                <div class="flex justify-between text-xs font-bold mb-1">
-                  <span class="text-slate-600">2. 擴散不耗能原理</span>
-                  <span id="scoreDim2" class="text-indigo-600">0%</span>
-                </div>
-                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                  <div id="barDim2" class="bg-indigo-500 h-full w-0 transition-all duration-1000"></div>
-                </div>
-              </div>
-
-              <div>
-                <div class="flex justify-between text-xs font-bold mb-1">
-                  <span class="text-slate-600">3. 水分進出雙重管道</span>
-                  <span id="scoreDim3" class="text-sky-600">0%</span>
-                </div>
-                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                  <div id="barDim3" class="bg-sky-500 h-full w-0 transition-all duration-1000"></div>
-                </div>
-              </div>
-
-              <div>
-                <div class="flex justify-between text-xs font-bold mb-1">
-                  <span class="text-slate-600">4. 通道專一性概念</span>
-                  <span id="scoreDim4" class="text-amber-600">0%</span>
-                </div>
-                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                  <div id="barDim4" class="bg-amber-500 h-full w-0 transition-all duration-1000"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-6 pt-4 border-t border-slate-100 text-xs text-slate-400">
-            * 完成「物質分類挑戰」與「觀念簡單測驗」即可獲得百分之百的學習報告！
-          </div>
-        </div>
-
-        <!-- Certificate Generator & Renderer -->
-        <div class="lg:col-span-2 bg-white rounded-2xl p-6 shadow-sm border border-slate-100 space-y-6">
-          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <div>
-              <h3 class="text-lg font-bold text-slate-800">細胞膜解密大師證書</h3>
-              <p class="text-xs text-slate-500 mt-1">
-                完成挑戰並正確率達 80% 以上，即可輸入姓名並列印你的專屬證書！
-              </p>
-            </div>
-            
-            <div class="flex gap-2 w-full sm:w-auto">
-              <input type="text" id="studentNameInput" placeholder="請輸入你的姓名" class="px-4 py-2 text-sm border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 w-full sm:w-44">
-              <button onclick="generateCertificate()" class="px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold rounded-xl shadow-sm transition active:scale-95 whitespace-nowrap">
-                產生證書
-              </button>
-            </div>
-          </div>
-
-          <!-- Printable Certificate Frame -->
-          <div id="certificateContainer" class="relative bg-gradient-to-br from-amber-50/40 via-yellow-50/20 to-amber-100/30 rounded-2xl p-6 md:p-10 border-4 border-amber-300 shadow-md text-center max-w-xl mx-auto overflow-hidden">
-            <!-- Watermark or background elements -->
-            <div class="absolute -bottom-10 -right-10 w-44 h-44 rounded-full bg-amber-200/20 border-8 border-amber-300/20 pointer-events-none"></div>
-            <div class="absolute -top-10 -left-10 w-44 h-44 rounded-full bg-amber-200/20 border-8 border-amber-300/20 pointer-events-none"></div>
-
-            <div class="relative border-2 border-amber-200 p-4 md:p-6 bg-white/70 backdrop-blur-sm rounded-xl">
-              <!-- Cert Logo -->
-              <div class="text-amber-600 text-4xl mb-2">
-                <i class="fas fa-award"></i>
-              </div>
-              <h4 class="text-2xl font-black text-amber-900 tracking-widest uppercase mb-1">榮譽特訓證書</h4>
-              <p class="text-[10px] tracking-widest text-amber-700 font-bold uppercase mb-6">Master of Cellular Transport Decryption</p>
-              
-              <p class="text-sm text-slate-600">茲證明</p>
-              <h5 id="certStudentName" class="text-2xl font-bold text-slate-800 border-b border-slate-300 inline-block px-8 py-1 my-3">九年級生物特訓生</h5>
-              
-              <p class="text-xs text-slate-600 max-w-sm mx-auto leading-relaxed mt-2">
-                於本活動中順利完成「細胞膜動態模擬」探索、成功通過「物質分類大挑戰」及「觀念診斷 8 大核心測驗」，對細胞膜結構、擴散作用與蛋白質通道已具備優異的理解與核心素養。
-              </p>
-
-              <!-- Stats Summary in Cert -->
-              <div class="grid grid-cols-2 gap-4 max-w-xs mx-auto my-6 p-2 bg-amber-50/50 rounded-xl border border-amber-200/50">
-                <div>
-                  <span class="text-[10px] text-amber-700 block">分類挑戰成績</span>
-                  <span id="certSortingScore" class="font-bold text-slate-800 text-sm">-- %</span>
-                </div>
-                <div>
-                  <span class="text-[10px] text-amber-700 block">觀念測驗得分</span>
-                  <span id="certQuizScore" class="font-bold text-slate-800 text-sm">-- 分</span>
-                </div>
-              </div>
-
-              <!-- Footer of cert -->
-              <div class="flex justify-between items-center text-[10px] text-slate-400 mt-4 px-4">
-                <span>核發單位：解密特訓小組</span>
-                <span id="certDate">發證日期：2026/07/07</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Printable instructions -->
-          <div class="flex justify-center">
-            <button onclick="window.print()" class="px-6 py-2.5 border border-slate-200 hover:border-slate-300 rounded-xl text-slate-700 text-sm font-semibold flex items-center gap-2 shadow-sm hover:shadow transition active:scale-95">
-              <i class="fas fa-print"></i> 列印我的證書
+            <button onclick="switchTab('cheatsheet')" id="tab-cheatsheet" class="tab-btn flex-1 py-3 text-center rounded-xl font-bold text-sm md:text-base transition-all duration-300 flex items-center justify-center gap-2 text-slate-600 hover:bg-emerald-50">
+                📚 重點整理卡
             </button>
-          </div>
         </div>
-
-      </div>
     </div>
 
-  </main>
+    <!-- 主內容區 -->
+    <main class="max-w-5xl mx-auto px-4 mt-6">
 
-  <!-- Footer -->
-  <footer class="bg-slate-900 text-slate-400 text-xs py-8 mt-12 border-t border-slate-800">
-    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
-      <div>
-        <p class="font-bold text-slate-300">細胞膜物質運輸解密特訓營 &copy; 2026</p>
-        <p class="mt-1 text-[11px] text-slate-500">專為九年級生物會考、段考複習設計。去除繁雜名詞，專注核心觀念。</p>
-      </div>
-      <div class="flex gap-4 text-slate-500 text-sm">
-        <a href="#" onclick="switchTab('simulator')" class="hover:text-slate-300 transition">模擬器</a>
-        <span>&bull;</span>
-        <a href="#" onclick="switchTab('sorting')" class="hover:text-slate-300 transition">分類挑戰</a>
-        <span>&bull;</span>
-        <a href="#" onclick="switchTab('quiz')" class="hover:text-slate-300 transition">觀念測驗</a>
-      </div>
-    </div>
-  </footer>
+        <!-- ================= SECTION 1: 互動操作實驗室 ================= -->
+        <section id="page-lab" class="tab-content block">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                
+                <!-- 左側：溫度實驗 -->
+                <div class="lg:col-span-7 bg-white p-6 rounded-3xl shadow-md border border-emerald-100">
+                    <h2 class="text-xl font-bold text-slate-800 border-b pb-3 mb-4 flex items-center gap-2">
+                        <span class="p-1.5 bg-emerald-100 text-emerald-700 rounded-lg">🌡️</span> 實驗 1：溫度與活性動態曲線
+                    </h2>
+                    <p class="text-xs text-slate-500 mb-6">拉動下方滑桿，觀察在不同溫度下，酵素蛋白質的「立體結構」與「催化活性」會發生什麼變化？（注意高溫與低溫的致命差異！）</p>
+                    
+                    <!-- 溫度曲線 SVG -->
+                    <div class="relative bg-slate-50 rounded-2xl p-4 border border-slate-200">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-slate-500">活性 (Activity)</span>
+                            <span id="temp-status-badge" class="px-2.5 py-0.5 rounded text-xs font-bold bg-emerald-100 text-emerald-800">適合溫度</span>
+                        </div>
+                        
+                        <svg class="w-full h-48" viewBox="0 0 400 180" id="temp-svg">
+                            <line x1="50" y1="150" x2="350" y2="150" stroke="#cbd5e1" stroke-dasharray="3"/>
+                            <line x1="200" y1="30" x2="200" y2="150" stroke="#e2e8f0" stroke-dasharray="2"/>
+                            
+                            <!-- 曲線路徑 -->
+                            <path d="M 50,150 C 120,150 160,30 200,30 C 215,30 225,80 250,150" fill="none" stroke="#94a3b8" stroke-width="3" stroke-linecap="round"/>
+                            <path id="temp-curve-active" d="M 50,150 C 120,150 160,30 200,30" fill="none" stroke="#10b981" stroke-width="4" stroke-linecap="round"/>
+                            
+                            <text x="200" y="20" font-size="10" font-weight="bold" fill="#047857" text-anchor="middle">最佳作用溫度 (約 37°C~40°C)</text>
+                            
+                            <!-- 拖曳指示點 -->
+                            <circle id="temp-pointer" cx="200" cy="30" r="7" fill="#10b981" stroke="white" stroke-width="2" class="transition-all duration-100"/>
+                            <line id="temp-pointer-line" x1="200" y1="30" x2="200" y2="150" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3"/>
+                            
+                            <!-- 刻度 -->
+                            <text x="50" y="165" font-size="10" fill="#64748b" text-anchor="middle">0°C</text>
+                            <text x="125" y="165" font-size="10" fill="#64748b" text-anchor="middle">20°C</text>
+                            <text x="200" y="165" font-size="10" fill="#64748b" text-anchor="middle">40°C</text>
+                            <text x="250" y="165" font-size="10" fill="#64748b" text-anchor="middle">60°C</text>
+                            <text x="350" y="165" font-size="10" fill="#64748b" text-anchor="middle">100°C</text>
+                            <text x="200" y="178" font-size="11" font-weight="bold" fill="#475569" text-anchor="middle">溫度 (°C)</text>
+                        </svg>
+                    </div>
 
-  <!-- Notification Banner custom -->
-  <div id="toastNotification" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 text-white rounded-xl shadow-2xl p-4 flex items-center gap-3 border border-slate-800 max-w-sm">
-    <div id="toastIcon" class="w-8 h-8 rounded-full bg-teal-500/20 text-teal-400 flex items-center justify-center flex-shrink-0">
-      <i class="fas fa-circle-check"></i>
-    </div>
-    <div>
-      <h5 id="toastTitle" class="font-bold text-sm">通知</h5>
-      <p id="toastMessage" class="text-xs text-slate-400 leading-tight">訊息內容</p>
-    </div>
-  </div>
+                    <!-- 溫度控制 -->
+                    <div class="mt-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm font-bold text-slate-600">調整實驗室溫度：</span>
+                            <span id="temp-display" class="text-2xl font-black text-emerald-600">37°C</span>
+                        </div>
+                        <input type="range" id="temp-slider" min="0" max="100" value="37" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600" oninput="updateTemperature(this.value)">
+                    </div>
 
-  <!-- Sound Synth Script & Simulator Logic & Game State Script -->
-  <script>
-    // Global Audio Context for Sound Effects (Web Audio API)
-    let audioCtx = null;
-    let isSoundOn = true;
+                    <!-- 酵素微觀狀態 -->
+                    <div class="mt-6 bg-emerald-50/50 p-4 rounded-2xl border border-emerald-100 flex flex-col md:flex-row items-center gap-4">
+                        <div class="w-24 h-24 flex-shrink-0 bg-white rounded-xl shadow-inner border border-emerald-200 flex items-center justify-center relative overflow-hidden">
+                            <svg class="w-20 h-20" viewBox="0 0 100 100">
+                                <path id="enzyme-shape" d="M 20,50 A 30,30 0 1,1 80,50 L 65,50 A 15,15 0 0,0 35,50 Z" fill="#34d399" stroke="#059669" stroke-width="2"/>
+                                <g id="freeze-ice" class="opacity-0 transition-opacity duration-300">
+                                    <path d="M 50,20 L 50,80 M 20,50 L 80,50 M 30,30 L 70,70 M 30,70 L 70,30" stroke="#38bdf8" stroke-width="2"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 text-sm">此時酵素的微觀構造與活性：</h4>
+                            <p id="temp-description" class="text-xs text-slate-600 mt-1">形狀完整，活性最強。酵素能完美與受質結合，快速催化化學反應！</p>
+                            <div class="mt-2 flex gap-2 flex-wrap">
+                                <span class="text-xs bg-white text-slate-600 border px-2 py-0.5 rounded" id="temp-structure-type">結構狀態：完整</span>
+                                <span class="text-xs bg-white text-slate-600 border px-2 py-0.5 rounded" id="temp-reversibility">回復性：-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    function initAudio() {
-      if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      }
-    }
+                <!-- 右側：酸鹼度匹配 & 專一性動畫 -->
+                <div class="lg:col-span-5 flex flex-col gap-6">
+                    <!-- 實驗 2：消化道 pH -->
+                    <div class="bg-white p-6 rounded-3xl shadow-md border border-emerald-100">
+                        <h2 class="text-xl font-bold text-slate-800 border-b pb-3 mb-4 flex items-center gap-2">
+                            <span class="p-1.5 bg-sky-100 text-sky-700 rounded-lg">🧪</span> 實驗 2：消化道 pH 值大作戰
+                        </h2>
+                        
+                        <div class="grid grid-cols-3 gap-2 mb-4">
+                            <button onclick="selectOrgan('stomach')" id="organ-stomach" class="organ-btn border-2 border-slate-200 hover:border-slate-300 rounded-xl p-2 text-center transition-all">
+                                <span class="text-2xl block">🤢</span>
+                                <span class="text-xs font-bold block mt-1">胃 (強酸)</span>
+                            </button>
+                            <button onclick="selectOrgan('mouth')" id="organ-mouth" class="organ-btn border-2 border-emerald-500 bg-emerald-50 rounded-xl p-2 text-center transition-all">
+                                <span class="text-2xl block">👄</span>
+                                <span class="text-xs font-bold block mt-1">口腔 (中性)</span>
+                            </button>
+                            <button onclick="selectOrgan('intestine')" id="organ-intestine" class="organ-btn border-2 border-slate-200 hover:border-slate-300 rounded-xl p-2 text-center transition-all">
+                                <span class="text-2xl block">🌀</span>
+                                <span class="text-xs font-bold block mt-1">小腸 (弱鹼)</span>
+                            </button>
+                        </div>
 
-    function toggleSound() {
-      isSoundOn = !isSoundOn;
-      const soundIcon = document.querySelector('.id-sound-icon');
-      const soundText = document.querySelector('#soundToggleBtn span');
-      if (isSoundOn) {
-        soundIcon.className = 'fas id-sound-icon fa-volume-up text-teal-300';
-        soundText.textContent = '音效: 開';
-        showToast('音效開啟', '已開啟網頁合成音效回饋。', 'success');
-      } else {
-        soundIcon.className = 'fas id-sound-icon fa-volume-mute text-slate-400';
-        soundText.textContent = '音效: 關';
-        showToast('音效關閉', '已關閉所有音訊回饋。', 'info');
-      }
-    }
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <div class="flex justify-between items-center mb-2">
+                                <span id="organ-name" class="font-bold text-slate-700">👅 口腔環境 (pH值約 7)</span>
+                                <span id="organ-ph-badge" class="text-xs font-black px-2.5 py-0.5 rounded bg-amber-100 text-amber-800">中性環境</span>
+                            </div>
+                            
+                            <!-- pH 曲線迷你圖 -->
+                            <svg class="w-full h-20 bg-white rounded border mb-3" viewBox="0 0 300 80">
+                                <path id="curve-ph-acid" d="M 20,70 C 40,20 60,20 80,70" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="2" opacity="0.3"/>
+                                <path id="curve-ph-neutral" d="M 100,70 C 130,15 150,15 180,70" fill="none" stroke="#10b981" stroke-width="3"/>
+                                <path id="curve-ph-alkaline" d="M 200,70 C 220,20 240,20 260,70" fill="none" stroke="#3b82f6" stroke-width="2" stroke-dasharray="2" opacity="0.3"/>
+                                <text x="50" y="78" font-size="8" fill="#ef4444" font-weight="bold">① 胃蛋白酶</text>
+                                <text x="140" y="78" font-size="8" fill="#10b981" font-weight="bold">② 唾液澱粉酶</text>
+                                <text x="230" y="78" font-size="8" fill="#3b82f6" font-weight="bold">③ 小腸消化酶</text>
+                            </svg>
 
-    function playSynthSound(freqs, durations, type = 'sine', slide = false) {
-      if (!isSoundOn) return;
-      initAudio();
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
+                            <p id="organ-description" class="text-xs text-slate-600 leading-relaxed">
+                                適合<strong>唾液澱粉酶</strong>運作。如果將唾液澱粉酶送入胃部（強酸環境），它的蛋白質結構就會遭到破壞而失去活性！
+                            </p>
+                        </div>
+                    </div>
 
-      let now = audioCtx.currentTime;
-      let osc = audioCtx.createOscillator();
-      let gainNode = audioCtx.createGain();
+                    <!-- 實驗 3：專一性與重複性動畫 -->
+                    <div class="bg-white p-6 rounded-3xl shadow-md border border-emerald-100">
+                        <h2 class="text-xl font-bold text-slate-800 border-b pb-3 mb-4 flex items-center gap-2">
+                            <span class="p-1.5 bg-amber-100 text-amber-700 rounded-lg">🔑</span> 實驗 3：專一性與重複性動畫
+                        </h2>
+                        
+                        <div class="grid grid-cols-2 gap-2 mb-4">
+                            <button onclick="runKeyModel('starch')" class="py-2 px-3 bg-amber-50 border border-amber-200 hover:bg-amber-100 rounded-xl text-xs font-bold text-amber-800 flex items-center justify-center gap-1.5">
+                                🍞 澱粉分子 (可配對)
+                            </button>
+                            <button onclick="runKeyModel('protein')" class="py-2 px-3 bg-rose-50 border border-rose-200 hover:bg-rose-100 rounded-xl text-xs font-bold text-rose-800 flex items-center justify-center gap-1.5">
+                                🥩 蛋白質分子 (不配對)
+                            </button>
+                        </div>
 
-      osc.connect(gainNode);
-      gainNode.connect(audioCtx.destination);
+                        <!-- 動畫模擬區 -->
+                        <div class="h-32 bg-slate-900 rounded-2xl relative overflow-hidden flex items-center justify-center">
+                            <div class="absolute top-2 left-2 text-[9px] text-slate-400 font-mono">動畫模擬器</div>
+                            
+                            <!-- 酵素 -->
+                            <div id="anime-enzyme" class="absolute left-1/4 transform -translate-x-1/2 flex flex-col items-center z-10 transition-transform duration-500">
+                                <svg class="w-14 h-14" viewBox="0 0 100 100">
+                                    <path d="M 10,50 A 40,40 0 1,1 90,50 L 70,50 A 20,20 0 0,0 30,50 Z" fill="#10b981" stroke="#047857" stroke-width="3"/>
+                                </svg>
+                                <span class="text-[8px] text-emerald-400 font-bold mt-1">澱粉酶 (不變)</span>
+                            </div>
 
-      osc.type = type;
+                            <!-- 受質 -->
+                            <div id="anime-substrate" class="absolute right-6 flex flex-col items-center z-20 transition-all duration-1000">
+                                <svg class="w-10 h-10" viewBox="0 0 50 50" id="substrate-svg">
+                                    <path d="M 10,25 A 15,15 0 0,1 40,25 Z" fill="#fbbf24" stroke="#d97706" stroke-width="2"/>
+                                </svg>
+                                <span id="substrate-label" class="text-[8px] text-amber-300 font-bold mt-1">澱粉分子</span>
+                            </div>
+                            
+                            <div id="anime-spark" class="absolute left-1/4 top-1/2 transform -translate-y-1/2 -translate-x-1/2 text-xl opacity-0 transition-opacity duration-300">
+                                💥
+                            </div>
+                        </div>
 
-      if (slide) {
-        osc.frequency.setValueAtTime(freqs[0], now);
-        osc.frequency.exponentialRampToValueAtTime(freqs[1], now + durations[0]);
-        gainNode.gain.setValueAtTime(0.15, now);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, now + durations[0]);
-        osc.start(now);
-        osc.stop(now + durations[0]);
-      } else {
-        // Play sequential tones
-        let timeOffset = 0;
-        freqs.forEach((freq, idx) => {
-          let oscSeq = audioCtx.createOscillator();
-          let gainSeq = audioCtx.createGain();
-          oscSeq.type = type;
-          oscSeq.connect(gainSeq);
-          gainSeq.connect(audioCtx.destination);
+                        <p id="anime-desc" class="text-xs text-slate-500 mt-3 italic text-center">
+                            點擊上方按鈕開始觀察化學反應！
+                        </p>
+                    </div>
+                </div>
 
-          oscSeq.frequency.setValueAtTime(freq, now + timeOffset);
-          gainSeq.gain.setValueAtTime(0.15, now + timeOffset);
-          gainSeq.gain.exponentialRampToValueAtTime(0.01, now + timeOffset + durations[idx]);
+            </div>
+        </section>
 
-          oscSeq.start(now + timeOffset);
-          oscSeq.stop(now + timeOffset + durations[idx]);
+        <!-- ================= SECTION 2: 單題四選一檢測 (Wizard 模式) ================= -->
+        <section id="page-quiz" class="tab-content hidden">
+            <div class="max-w-2xl mx-auto bg-white rounded-3xl shadow-md border border-emerald-100 overflow-hidden">
+                
+                <!-- 測驗進度標示 -->
+                <div class="bg-gradient-to-r from-emerald-500 to-teal-600 p-4 text-white flex justify-between items-center px-6">
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs bg-emerald-400/30 px-2 py-0.5 rounded font-extrabold text-emerald-100">檢測進度</span>
+                        <span id="quiz-progress-text" class="text-sm font-black">1 / 8</span>
+                    </div>
+                    <div class="w-1/3 bg-slate-100/20 h-2 rounded-full overflow-hidden">
+                        <div id="quiz-progress-bar" class="bg-white h-full w-0 transition-all duration-300"></div>
+                    </div>
+                    <span id="quiz-score-badge" class="bg-amber-400 text-slate-900 text-xs font-black px-2.5 py-1 rounded-full">0 分</span>
+                </div>
 
-          timeOffset += durations[idx] * 0.8;
-        });
-      }
-    }
+                <!-- 1. 測驗開始畫面 -->
+                <div id="quiz-start-view" class="p-8 text-center space-y-6">
+                    <div class="text-6xl animate-bounce">✏️</div>
+                    <h3 class="text-2xl font-black text-slate-800">迷思概念單題大挑戰</h3>
+                    <p class="text-sm text-slate-500 max-w-md mx-auto leading-relaxed">
+                        本檢測共有 8 題四選一單選題，一題一頁，作答後立馬對答案與觀念解析！準備好就點擊下方按鈕開始吧。
+                    </p>
+                    <button onclick="startWizardQuiz()" class="px-8 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-2xl transition-all shadow-md active:scale-95">
+                        開始作答
+                    </button>
+                </div>
 
-    function playCorrectSound() {
-      playSynthSound([523.25, 659.25, 783.99], [0.1, 0.1, 0.25], 'triangle');
-    }
+                <!-- 2. 測驗中單題畫面 -->
+                <div id="quiz-play-view" class="hidden p-6 md:p-8 space-y-6">
+                    <!-- 題目卡片 -->
+                    <div id="quiz-question-container" class="fade-in space-y-6">
+                        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100">
+                            <span class="bg-emerald-100 text-emerald-800 text-xs font-extrabold px-2.5 py-1 rounded mb-2 inline-block">Q<span id="q-number">1</span></span>
+                            <p id="quiz-question-text" class="text-base md:text-lg font-bold text-slate-800 leading-relaxed">
+                                載入中...
+                            </p>
+                        </div>
 
-    function playWrongSound() {
-      playSynthSound([220, 147], [0.35], 'sawtooth', true);
-    }
+                        <!-- 四選一按鈕 -->
+                        <div id="quiz-options-container" class="grid grid-cols-1 gap-3">
+                            <!-- JS 動態生成按鈕 -->
+                        </div>
 
-    function playClickSound() {
-      playSynthSound([800], [0.05], 'sine');
-    }
+                        <!-- 解析卡片 -->
+                        <div id="quiz-explanation-card" class="hidden p-4 bg-blue-50 border border-blue-100 rounded-2xl fade-in text-slate-700 text-xs md:text-sm leading-relaxed">
+                            <h4 class="font-bold text-blue-800 flex items-center gap-1 mb-1">
+                                <span>💡</span> 觀念解析：
+                            </h4>
+                            <p id="quiz-explanation-text">解析載入中...</p>
+                        </div>
+                    </div>
 
-    // Tabs Manager
-    function switchTab(tabId) {
-      playClickSound();
-      // Hide all panels
-      document.querySelectorAll('.tab-panel').forEach(panel => {
-        panel.classList.add('hidden');
-      });
-      // Deactivate all buttons
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.className = "tab-btn px-5 py-4 border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-semibold text-sm md:text-base whitespace-nowrap flex items-center gap-2 transition";
-      });
+                    <!-- 下一題控制按鈕 -->
+                    <div class="pt-4 border-t border-slate-100 flex justify-end">
+                        <button id="quiz-next-btn" onclick="nextWizardQuestion()" class="hidden px-6 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl transition-all shadow-md active:scale-95 flex items-center gap-1.5">
+                            <span>下一題</span> ➔
+                        </button>
+                    </div>
+                </div>
 
-      // Show targeted panel
-      document.getElementById(`panel-${tabId}`).classList.remove('hidden');
-      // Highlight button
-      document.getElementById(`tab-${tabId}`).className = "tab-btn px-5 py-4 border-b-2 border-teal-600 font-bold text-teal-600 text-sm md:text-base whitespace-nowrap flex items-center gap-2 transition";
+                <!-- 3. 測驗結算畫面 -->
+                <div id="quiz-result-view" class="hidden p-8 text-center space-y-6">
+                    <div class="text-6xl">🏆</div>
+                    <h3 class="text-2xl font-black text-slate-800">檢測完成！診斷報告</h3>
+                    
+                    <div class="bg-emerald-50 py-4 px-6 rounded-2xl inline-block border border-emerald-100">
+                        <span class="text-slate-500 text-xs font-bold block">會考觀念成熟度</span>
+                        <span id="quiz-final-score" class="text-5xl font-black text-emerald-600">0</span>
+                        <span class="text-xl font-bold text-slate-400">/ 100 分</span>
+                    </div>
 
-      // Specifc Tab trigger logic
-      if (tabId === 'simulator') {
-        resizeCanvas();
-      } else if (tabId === 'certificate') {
-        updateAnalytics();
-      }
-    }
+                    <div class="bg-slate-50 p-5 rounded-2xl text-left border border-slate-200 max-w-lg mx-auto space-y-3">
+                        <h4 class="font-bold text-slate-700 flex items-center gap-1">
+                            🎯 <span>專屬迷思引導建議：</span>
+                        </h4>
+                        <p id="quiz-result-feedback" class="text-xs md:text-sm text-slate-600 leading-relaxed"></p>
+                        
+                        <!-- 弱點提醒 -->
+                        <div id="quiz-weakness-section" class="hidden space-y-2 border-t pt-3">
+                            <span class="text-xs font-black text-rose-500 block">⚠️ 仍有混淆的關鍵觀念：</span>
+                            <ul id="quiz-weakness-list" class="list-disc list-inside text-xs text-slate-500 space-y-1 pl-1">
+                                <!-- 弱點條目 -->
+                            </ul>
+                        </div>
+                    </div>
 
-    // Custom Toast system
-    function showToast(title, message, type = 'success') {
-      const toast = document.getElementById('toastNotification');
-      const toastTitle = document.getElementById('toastTitle');
-      const toastMsg = document.getElementById('toastMessage');
-      const toastIcon = document.getElementById('toastIcon');
+                    <button onclick="resetWizardQuiz()" class="px-8 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-2xl transition-all shadow-md active:scale-95">
+                        重新挑戰
+                    </button>
+                </div>
 
-      toastTitle.textContent = title;
-      toastMsg.textContent = message;
+            </div>
+        </section>
 
-      if (type === 'success') {
-        toastIcon.innerHTML = '<i class="fas fa-circle-check"></i>';
-        toastIcon.className = "w-8 h-8 rounded-full bg-teal-500/20 text-teal-400 flex items-center justify-center flex-shrink-0";
-      } else if (type === 'error') {
-        toastIcon.innerHTML = '<i class="fas fa-triangle-exclamation"></i>';
-        toastIcon.className = "w-8 h-8 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center flex-shrink-0";
-      } else {
-        toastIcon.innerHTML = '<i class="fas fa-circle-info"></i>';
-        toastIcon.className = "w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center flex-shrink-0";
-      }
+        <!-- ================= SECTION 3: 重點整理卡 ================= -->
+        <section id="page-cheatsheet" class="tab-content hidden">
+            <div class="bg-white p-6 rounded-3xl shadow-md border border-emerald-100">
+                <h2 class="text-2xl font-black text-slate-800 border-b pb-4 mb-6 flex items-center gap-2">
+                    <span class="p-1.5 bg-emerald-100 text-emerald-700 rounded-lg">📚</span> 酵素與代謝作用重點卡
+                </h2>
 
-      toast.style.transform = "translateY(0)";
-      toast.style.opacity = "1";
+                <!-- 代謝作用表格 -->
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse border border-slate-200 rounded-xl overflow-hidden">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-700 text-sm">
+                                <th class="border border-slate-200 p-3 text-left font-bold w-1/4">反應類型</th>
+                                <th class="border border-slate-200 p-3 text-left font-bold w-1/3">定義</th>
+                                <th class="border border-slate-200 p-3 text-left font-bold w-1/2">關鍵實例</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm">
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="border border-slate-200 p-3 font-bold text-sky-600 bg-sky-50/30">
+                                    分解作用<br><span class="text-[10px] text-slate-400 font-normal">Catabolism</span>
+                                </td>
+                                <td class="border border-slate-200 p-3 leading-relaxed">
+                                    <div class="font-semibold text-slate-700">大分子 ➔ 小分子</div>
+                                    <div class="text-[11px] text-slate-500 mt-1">此反應過程通常會「釋放能量」。</div>
+                                </td>
+                                <td class="border border-slate-200 p-3 space-y-1.5">
+                                    <div class="text-xs"><strong class="text-emerald-700">• 消化作用：</strong>蛋白質變胺基酸、澱粉變葡萄糖。</div>
+                                    <div class="text-xs"><strong class="text-emerald-700">• 呼吸作用：</strong>葡萄糖 + 氧氣 ➔ 二氧化碳 + 水 <strong>(釋能)</strong>。</div>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="border border-slate-200 p-3 font-bold text-amber-600 bg-amber-50/30">
+                                    合成作用<br><span class="text-[10px] text-slate-400 font-normal">Anabolism</span>
+                                </td>
+                                <td class="border border-slate-200 p-3 leading-relaxed">
+                                    <div class="font-semibold text-slate-700">小分子 ➔ 大分子</div>
+                                    <div class="text-[11px] text-slate-500 mt-1">此反應過程通常需要「吸收能量」。</div>
+                                </td>
+                                <td class="border border-slate-200 p-3 space-y-1.5">
+                                    <div class="text-xs"><strong class="text-emerald-700">• 儲存養分：</strong>葡萄糖轉化為澱粉（植物）或肝糖（動物）。</div>
+                                    <div class="text-xs"><strong class="text-emerald-700">• 養分製造：</strong>植物行光合作用製造葡萄糖。</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-      setTimeout(() => {
-        toast.style.transform = "translateY(80px)";
-        toast.style.opacity = "0";
-      }, 4000);
-    }
-  </script>
+                <!-- 三大會考重點 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                    <div class="bg-emerald-50 p-5 rounded-2xl border border-emerald-100">
+                        <span class="text-xl block mb-2">⚡</span>
+                        <h4 class="font-bold text-slate-800 mb-1">催化性與重複性</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            酵素（成分為<strong>蛋白質</strong>）能加速反應。在化學反應前後，酵素本身<strong>不會改變</strong>，可以重複被催化。
+                        </p>
+                    </div>
+                    <div class="bg-amber-50 p-5 rounded-2xl border border-amber-100">
+                        <span class="text-xl block mb-2">🔑</span>
+                        <h4 class="font-bold text-slate-800 mb-1">高度專一性</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            如同鎖與鑰匙一對一配對。<strong>一種酵素只能催化一種特定反應。</strong>唾液澱粉酶絕對無法分解蛋白質。
+                        </p>
+                    </div>
+                    <div class="bg-rose-50 p-5 rounded-2xl border border-rose-100">
+                        <span class="text-xl block mb-2">🥶</span>
+                        <h4 class="font-bold text-slate-800 mb-1">高溫 vs 低溫</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            <strong>低溫：</strong>活性降低，但結構完整，回溫可再度活化。<br>
+                            <strong>高溫：</strong>立體結構永久破壞，降溫也<strong>無法恢復活性</strong>！
+                        </p>
+                    </div>
+                </div>
 
-  <!-- ================= CANVAS SIMULATOR SCRIPT ================= -->
-  <script>
-    const canvas = document.getElementById('membraneCanvas');
-    const ctx = canvas.getContext('2d');
-    const canvasTooltip = document.getElementById('canvasTooltip');
-    const tooltipTitle = document.getElementById('tooltipTitle');
-    const tooltipDesc = document.getElementById('tooltipDesc');
+                <!-- 迷思 Q&A 閃卡 -->
+                <div class="mt-8 bg-slate-50 rounded-2xl p-5 border">
+                    <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-1.5 text-sm md:text-base">
+                        <span>❓</span> 會考常見迷思 Q&A
+                    </h3>
+                    <div class="space-y-4">
+                        <details class="bg-white p-3 rounded-xl border cursor-pointer group">
+                            <summary class="font-bold text-slate-700 text-xs md:text-sm flex justify-between items-center">
+                                <span>酵素一定要在生物體內才能反應嗎？</span>
+                                <span class="text-emerald-600 font-bold group-open:rotate-180 transition-transform">▼</span>
+                            </summary>
+                            <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+                                <strong>不需要！</strong>只要環境適當（溫度與 pH 符合），在試管中、生物體外同樣能發揮催化效果。
+                            </p>
+                        </details>
+                        <details class="bg-white p-3 rounded-xl border cursor-pointer group">
+                            <summary class="font-bold text-slate-700 text-xs md:text-sm flex justify-between items-center">
+                                <span>冷凍庫冷凍肉品，酵素被超低溫「殺死」了嗎？</span>
+                                <span class="text-emerald-600 font-bold group-open:rotate-180 transition-transform">▼</span>
+                            </summary>
+                            <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+                                <strong>不是！</strong>超低溫只是「大幅降低活性」，結構沒有被破壞。只要回到室溫解凍，酵素就會重新甦醒，食物仍會繼續腐敗。
+                            </p>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    let particles = [];
-    let membraneY = 0;
-    let membraneThickness = 48;
-    let animationId = null;
+    </main>
 
-    // Define channel ranges
-    let channels = {
-      glucose: { x: 0, width: 60, color: '#f97316', text: '橘色載體通道' },
-      mineral: { x: 0, width: 45, color: '#eab308', text: '黃色離子通道' },
-      aquaporin: { x: 0, width: 45, color: '#22c55e', text: '綠色水通道' }
-    };
+    <!-- JavaScript 核心控制邏輯 -->
+    <script>
+        // ================= Tab 控制切換 =================
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('block'));
+            
+            document.getElementById(`page-${tabId}`).classList.remove('hidden');
+            document.getElementById(`page-${tabId}`).classList.add('block');
 
-    function resizeCanvas() {
-      const container = canvas.parentElement;
-      canvas.width = container.clientWidth;
-      canvas.height = container.clientHeight;
-      membraneY = canvas.height / 2;
-
-      // Position channels evenly on the membrane
-      channels.glucose.x = canvas.width * 0.3;
-      channels.mineral.x = canvas.width * 0.55;
-      channels.aquaporin.x = canvas.width * 0.75;
-    }
-
-    // Particle class definition
-    class Particle {
-      constructor(type, x, y) {
-        this.type = type;
-        this.x = x || Math.random() * canvas.width;
-        this.y = y || Math.random() * (membraneY - 40) + 15; // default to outer cell
-        this.vx = (Math.random() - 0.5) * 1.5;
-        this.vy = (Math.random() - 0.5) * 1.5 + 0.3; // slight bias downward
-        this.state = 'outside'; // 'outside', 'crossing', 'inside'
-        this.bounceCounter = 0;
-        
-        // Custom properties based on particle species
-        switch (type) {
-          case 'starch':
-            this.radius = 14;
-            this.color = '#d97706';
-            this.label = '澱粉';
-            this.desc = '超大分子，絕對無法通過細胞膜，必須先在細胞外被分解成小分子「葡萄糖」！';
-            break;
-          case 'protein':
-            this.radius = 12;
-            this.color = '#38bdf8';
-            this.label = '蛋白質';
-            this.desc = '超大分子，無法直接通過膜，在消化系統中必須先被分解成「胺基酸」才能吸收。';
-            break;
-          case 'glucose':
-            this.radius = 7;
-            this.color = '#f97316';
-            this.label = '葡萄糖';
-            this.desc = '已被分解的小分子，但它不能直接穿透脂質細胞膜，一定要「走特殊蛋白質通道（橘色載體）」進出。';
-            break;
-          case 'water':
-            this.radius = 4.5;
-            this.color = '#2dd4bf';
-            this.label = '水分子';
-            this.desc = '極小的物質，既可以「直接穿透膜」，也可以透過「水通道蛋白質（綠色）」超快速通過！';
-            break;
-          case 'gas':
-            this.radius = 5.5;
-            this.color = '#ef4444';
-            this.label = '氧氣/二氧化碳';
-            this.desc = '極微小的氣體分子，不需任何通道，可以直接穿透細胞膜（簡單的擴散作用）。';
-            break;
-        }
-      }
-
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-
-        // X-axis wall bounce
-        if (this.x - this.radius < 0) {
-          this.x = this.radius;
-          this.vx *= -1;
-        } else if (this.x + this.radius > canvas.width) {
-          this.x = canvas.width - this.radius;
-          this.vx *= -1;
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-emerald-600', 'text-white');
+                btn.classList.add('text-slate-600', 'hover:bg-emerald-50');
+            });
+            const activeBtn = document.getElementById(`tab-${tabId}`);
+            activeBtn.classList.remove('text-slate-600', 'hover:bg-emerald-50');
+            activeBtn.classList.add('bg-emerald-600', 'text-white');
         }
 
-        // Y-axis boundary limit
-        if (this.y - this.radius < 0) {
-          this.y = this.radius;
-          this.vy *= -1;
-        } else if (this.y + this.radius > canvas.height) {
-          this.y = canvas.height - this.radius;
-          this.vy *= -1;
-        }
+        // ================= 實驗室 1: 溫度控制 =================
+        const tempDescriptions = {
+            freeze: "【低溫狀態 (0°C~15°C)】溫度極低，酵素分子進入休眠狀態。<strong>結構完好，但幾乎無活性。</strong>回溫就能立刻再度復活！",
+            normal: "【常溫上升中 (16°C~34°C)】隨著溫度上升，酵素活性逐漸增強，分子碰撞機會增加，反應變快！",
+            optimal: "【最佳溫度 (35°C~40°C)】達到最適合的黃金區。<strong>活性最高！</strong>結構完美，催化速度達到極致。",
+            heating: "【高溫警戒 (41°C~55°C)】過熱了！酵素活性大幅跌落，蛋白質結構開始出現受損。",
+            denatured: "【永久失去活性 (56°C~100°C)】超高溫<strong>永久破壞了蛋白質的立體結構</strong>。就算回溫，也絕對救不回來了，這就是『高溫殺菌』的原理！"
+        };
 
-        // Membrane interaction physics
-        if (this.state === 'outside' && this.y + this.radius >= membraneY - membraneThickness/2) {
-          this.handleMembraneCollision('down');
-        } else if (this.state === 'inside' && this.y - this.radius <= membraneY + membraneThickness/2) {
-          this.handleMembraneCollision('up');
-        } else if (this.state === 'crossing') {
-          if (this.y > membraneY + membraneThickness/2 + 5) {
-            this.state = 'inside';
-          } else if (this.y < membraneY - membraneThickness/2 - 5) {
-            this.state = 'outside';
-          }
-        }
-      }
+        function updateTemperature(val) {
+            document.getElementById('temp-display').innerText = `${val}°C`;
+            const pointer = document.getElementById('temp-pointer');
+            const pointerLine = document.getElementById('temp-pointer-line');
+            const statusBadge = document.getElementById('temp-status-badge');
+            const desc = document.getElementById('temp-description');
+            const structType = document.getElementById('temp-structure-type');
+            const reversibility = document.getElementById('temp-reversibility');
+            const enzymeShape = document.getElementById('enzyme-shape');
+            const iceG = document.getElementById('freeze-ice');
 
-      handleMembraneCollision(dir) {
-        const factor = (dir === 'down') ? 1 : -1;
-
-        if (this.type === 'starch' || this.type === 'protein') {
-          // Large molecule: strictly blocked, bounce back
-          this.vy *= -1.2; 
-          this.y = membraneY - (membraneThickness/2 + this.radius + 1) * factor;
-          this.bounceCounter++;
-          if (this.bounceCounter > 3 && this.type === 'starch') {
-            splitStarch(this);
-          }
-        } 
-        else if (this.type === 'gas') {
-          // Gases pass right through directly
-          this.state = (dir === 'down') ? 'inside' : 'outside';
-        } 
-        else if (this.type === 'water') {
-          const inAquaporin = (this.x >= channels.aquaporin.x - channels.aquaporin.width/2 && 
-                               this.x <= channels.aquaporin.x + channels.aquaporin.width/2);
-          
-          if (inAquaporin) {
-            // Speed up through aquaporin
-            this.state = 'crossing';
-            this.vx = 0; 
-            this.vy = 2.5 * factor;
-          } else {
-            // Simple diffusion: has 60% chance to pass directly, 40% chance to bounce
-            if (Math.random() < 0.6) {
-              this.state = (dir === 'down') ? 'inside' : 'outside';
+            const x = 50 + (val / 100) * 300;
+            let y = 150;
+            if (val <= 40) {
+                y = 150 - (val / 40) * 120;
+            } else if (val <= 50) {
+                y = 30 + ((val - 40) / 10) * 120;
             } else {
-              this.vy *= -0.8;
-              this.y = membraneY - (membraneThickness/2 + this.radius + 1) * factor;
+                y = 150;
             }
-          }
-        } 
-        else if (this.type === 'glucose') {
-          // Glucose requires active carriers
-          const inGlucoseChannel = (this.x >= channels.glucose.x - channels.glucose.width/2 && 
-                                    this.x <= channels.glucose.x + channels.glucose.width/2);
-          
-          if (inGlucoseChannel) {
-            this.state = 'crossing';
-            this.vx = 0;
-            this.vy = 1.8 * factor;
-          } else {
-            // Bounce back
-            this.vy *= -1;
-            this.y = membraneY - (membraneThickness/2 + this.radius + 1) * factor;
-          }
-        }
-      }
 
-      draw() {
-        ctx.beginPath();
-        if (this.type === 'starch') {
-          for (let i = 0; i < 4; i++) {
-            ctx.arc(this.x + (i - 1.5) * 8, this.y + Math.sin(i + Date.now() * 0.01) * 3, this.radius/2, 0, Math.PI * 2);
-          }
-          ctx.fillStyle = this.color;
-          ctx.fill();
-        } 
-        else if (this.type === 'protein') {
-          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-          ctx.arc(this.x - 6, this.y - 6, this.radius * 0.7, 0, Math.PI * 2);
-          ctx.arc(this.x + 6, this.y + 4, this.radius * 0.7, 0, Math.PI * 2);
-          ctx.fillStyle = this.color;
-          ctx.fill();
-        } 
-        else if (this.type === 'glucose') {
-          ctx.save();
-          ctx.translate(this.x, this.y);
-          ctx.beginPath();
-          for (let i = 0; i < 6; i++) {
-            ctx.lineTo(Math.cos(i * Math.PI / 3) * this.radius, Math.sin(i * Math.PI / 3) * this.radius);
-          }
-          ctx.closePath();
-          ctx.fillStyle = this.color;
-          ctx.fill();
-          ctx.restore();
-        } 
-        else {
-          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-          ctx.fillStyle = this.color;
-          ctx.fill();
-        }
-        ctx.closePath();
-      }
-    }
+            pointer.setAttribute('cx', x);
+            pointer.setAttribute('cy', y);
+            pointerLine.setAttribute('x1', x);
+            pointerLine.setAttribute('x2', x);
+            pointerLine.setAttribute('y1', y);
 
-    function spawnMolecule(type) {
-      playClickSound();
-      initAudio();
-      
-      const count = type === 'water' ? 8 : (type === 'gas' ? 8 : 3);
-      for (let i = 0; i < count; i++) {
-        const rx = Math.random() * (canvas.width - 40) + 20;
-        const ry = Math.random() * (membraneY - 60) + 20;
-        particles.push(new Particle(type, rx, ry));
-      }
-      
-      showToast('小精靈提示', `已生成 ${count} 個${getMoleculeName(type)}到細胞外面！`, 'info');
-    }
-
-    function getMoleculeName(type) {
-      switch(type) {
-        case 'starch': return '澱粉';
-        case 'protein': return '蛋白質';
-        case 'glucose': return '葡萄糖';
-        case 'water': return '水';
-        case 'gas': return '氧/二氧化碳';
-      }
-    }
-
-    function splitStarch(starchObj) {
-      const index = particles.indexOf(starchObj);
-      if (index > -1) {
-        particles.splice(index, 1);
-        for (let i = 0; i < 3; i++) {
-          const glucose = new Particle('glucose', starchObj.x + (i - 1) * 12, starchObj.y);
-          glucose.vy = Math.abs(glucose.vy); 
-          particles.push(glucose);
-        }
-        playSynthSound([600, 900], [0.1, 0.1], 'sine');
-        showToast('食物消化分解！', '大分子「澱粉」被分解成小分子「葡萄糖」了！現在可以順利穿過橘色的載體通道。', 'success');
-      }
-    }
-
-    function clearCanvasParticles() {
-      particles = [];
-      playSynthSound([150], [0.15], 'sawtooth');
-    }
-
-    function drawMembraneStructure() {
-      const showBilayer = document.getElementById('showBilayer').checked;
-      const showGradient = document.getElementById('showGradient').checked;
-
-      if (showGradient) {
-        let grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
-        grad.addColorStop(0, 'rgba(15, 23, 42, 0.95)'); 
-        grad.addColorStop(0.35, 'rgba(15, 23, 42, 0.85)');
-        grad.addColorStop(0.5, 'rgba(23, 37, 84, 0.6)'); 
-        grad.addColorStop(0.65, 'rgba(15, 23, 42, 0.5)'); 
-        grad.addColorStop(1, 'rgba(15, 23, 42, 0.35)');
-        ctx.fillStyle = grad;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-      } else {
-        ctx.fillStyle = '#0f172a';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-      }
-
-      if (showBilayer) {
-        ctx.lineWidth = 1;
-        const lipidRadius = 6;
-        const lipidGap = 13;
-        
-        for (let rx = lipidRadius; rx < canvas.width; rx += lipidGap) {
-          let isInsideChannel = false;
-          Object.values(channels).forEach(channel => {
-            if (rx >= channel.x - channel.width/2 - 5 && rx <= channel.x + channel.width/2 + 5) {
-              isInsideChannel = true;
+            if (val <= 15) {
+                statusBadge.innerText = "低溫凍結";
+                statusBadge.className = "px-2.5 py-0.5 rounded text-xs font-bold bg-sky-100 text-sky-800";
+                desc.innerHTML = tempDescriptions.freeze;
+                structType.innerText = "結構狀態：完整 (休眠中)";
+                reversibility.innerText = "回復性：可 (回溫即可恢復)";
+                enzymeShape.setAttribute('d', "M 20,50 A 30,30 0 1,1 80,50 L 65,50 A 15,15 0 0,0 35,50 Z");
+                enzymeShape.setAttribute('fill', '#a5f3fc');
+                enzymeShape.setAttribute('stroke', '#0891b2');
+                iceG.style.opacity = '1';
+            } else if (val > 15 && val < 35) {
+                statusBadge.innerText = "活性上升";
+                statusBadge.className = "px-2.5 py-0.5 rounded text-xs font-bold bg-amber-100 text-amber-800";
+                desc.innerHTML = tempDescriptions.normal;
+                structType.innerText = "結構狀態：完整";
+                reversibility.innerText = "回復性：無需回復";
+                enzymeShape.setAttribute('d', "M 20,50 A 30,30 0 1,1 80,50 L 65,50 A 15,15 0 0,0 35,50 Z");
+                enzymeShape.setAttribute('fill', '#34d399');
+                enzymeShape.setAttribute('stroke', '#059669');
+                iceG.style.opacity = '0';
+            } else if (val >= 35 && val <= 40) {
+                statusBadge.innerText = "黃金活性！";
+                statusBadge.className = "px-2.5 py-0.5 rounded text-xs font-bold bg-emerald-500 text-white animate-pulse-ring";
+                desc.innerHTML = tempDescriptions.optimal;
+                structType.innerText = "結構狀態：最完美";
+                reversibility.innerText = "回復性：最佳狀態";
+                enzymeShape.setAttribute('d', "M 20,50 A 30,30 0 1,1 80,50 L 65,50 A 15,15 0 0,0 35,50 Z");
+                enzymeShape.setAttribute('fill', '#10b981');
+                enzymeShape.setAttribute('stroke', '#047857');
+                iceG.style.opacity = '0';
+            } else if (val > 40 && val <= 55) {
+                statusBadge.innerText = "高溫受損";
+                statusBadge.className = "px-2.5 py-0.5 rounded text-xs font-bold bg-orange-100 text-orange-800";
+                desc.innerHTML = tempDescriptions.heating;
+                structType.innerText = "結構狀態：稍微變形";
+                reversibility.innerText = "回復性：極差";
+                enzymeShape.setAttribute('d', "M 20,50 A 28,32 0 1,1 85,45 L 68,48 A 12,18 0 0,0 32,52 Z");
+                enzymeShape.setAttribute('fill', '#f59e0b');
+                enzymeShape.setAttribute('stroke', '#b45309');
+                iceG.style.opacity = '0';
+            } else {
+                statusBadge.innerText = "永久失活 (變性)";
+                statusBadge.className = "px-2.5 py-0.5 rounded text-xs font-bold bg-red-600 text-white";
+                desc.innerHTML = tempDescriptions.denatured;
+                structType.innerText = "結構狀態：永久被毀";
+                reversibility.innerText = "回復性：完全不可能";
+                enzymeShape.setAttribute('d', "M 15,40 Q 30,25 45,35 T 75,30 Q 85,55 60,65 T 20,60 Z");
+                enzymeShape.setAttribute('fill', '#ef4444');
+                enzymeShape.setAttribute('stroke', '#991b1b');
+                iceG.style.opacity = '0';
             }
-          });
-
-          if (!isInsideChannel) {
-            // Upper head
-            ctx.beginPath();
-            ctx.arc(rx, membraneY - 14, lipidRadius, 0, Math.PI * 2);
-            ctx.fillStyle = '#818cf8'; 
-            ctx.fill();
-            ctx.closePath();
-
-            // Upper tail
-            ctx.beginPath();
-            ctx.moveTo(rx - 2, membraneY - 8);
-            ctx.lineTo(rx - 2, membraneY - 2);
-            ctx.moveTo(rx + 2, membraneY - 8);
-            ctx.lineTo(rx + 2, membraneY - 2);
-            ctx.strokeStyle = '#e2e8f0';
-            ctx.stroke();
-            ctx.closePath();
-
-            // Lower head
-            ctx.beginPath();
-            ctx.arc(rx, membraneY + 14, lipidRadius, 0, Math.PI * 2);
-            ctx.fillStyle = '#818cf8'; 
-            ctx.fill();
-            ctx.closePath();
-
-            // Lower tail
-            ctx.beginPath();
-            ctx.moveTo(rx - 2, membraneY + 8);
-            ctx.lineTo(rx - 2, membraneY + 2);
-            ctx.moveTo(rx + 2, membraneY + 8);
-            ctx.lineTo(rx + 2, membraneY + 2);
-            ctx.strokeStyle = '#e2e8f0';
-            ctx.stroke();
-            ctx.closePath();
-          }
         }
-      } else {
-        ctx.beginPath();
-        ctx.rect(0, membraneY - membraneThickness/2, canvas.width, membraneThickness);
-        ctx.fillStyle = 'rgba(255,255,255,0.03)';
-        ctx.fill();
-        ctx.closePath();
-      }
 
-      drawChannelProtein(channels.glucose.x, membraneY, channels.glucose.width, '#f97316', '橘色載體蛋白');
-      drawChannelProtein(channels.mineral.x, membraneY, channels.mineral.width, '#eab308', '黃色離子通道');
-      drawChannelProtein(channels.aquaporin.x, membraneY, channels.aquaporin.width, '#22c55e', '綠色水通道');
-    }
+        // ================= 實驗 2: 酸鹼器官 =================
+        const organData = {
+            stomach: {
+                name: "🤢 胃部環境 (pH 1.5 ~ 2)",
+                phType: "強酸性",
+                badgeClass: "bg-red-100 text-red-800",
+                desc: "胃部屬於極酸性，最適合<strong>胃蛋白酶</strong>運作。如果把唾液澱粉酶吞入胃中，它會因為胃酸環境不對，使蛋白質結構被破壞而死。",
+                activeCurve: "acid"
+            },
+            mouth: {
+                name: "👅 口腔環境 (pH 約 7)",
+                phType: "中性",
+                badgeClass: "bg-emerald-100 text-emerald-800",
+                desc: "中性環境極度適合<strong>唾液澱粉酶</strong>。任何大於或小於這個酸鹼度的環境，都會導致它的活性大打折扣。",
+                activeCurve: "neutral"
+            },
+            intestine: {
+                name: "🌀 小腸環境 (pH 約 8)",
+                phType: "弱鹼性",
+                badgeClass: "bg-sky-100 text-sky-800",
+                desc: "膽汁與胰液會將食物中和成弱鹼性，提供給小腸裡的<strong>消化酶（如胰蛋白酶）</strong>在弱鹼環境下高速運作！",
+                activeCurve: "alkaline"
+            }
+        };
 
-    function drawChannelProtein(cx, cy, width, color, labelText) {
-      ctx.save();
-      ctx.lineWidth = 4;
-      ctx.strokeStyle = color;
+        function selectOrgan(id) {
+            document.querySelectorAll('.organ-btn').forEach(btn => {
+                btn.className = "organ-btn border-2 border-slate-200 hover:border-slate-300 rounded-xl p-2 text-center transition-all";
+            });
+            const activeBtn = document.getElementById(`organ-${id}`);
+            activeBtn.className = "organ-btn border-2 border-emerald-500 bg-emerald-50 rounded-xl p-2 text-center transition-all shadow-md";
 
-      ctx.beginPath();
-      ctx.arc(cx - width/3, cy, 20, Math.PI * 1.5, Math.PI * 0.5, true);
-      ctx.fillStyle = '#1e293b';
-      ctx.fill();
-      ctx.stroke();
-      ctx.closePath();
+            const data = organData[id];
+            document.getElementById('organ-name').innerHTML = data.name;
+            document.getElementById('organ-ph-badge').innerText = data.phType;
+            document.getElementById('organ-ph-badge').className = `text-xs font-black px-2.5 py-0.5 rounded ${data.badgeClass}`;
+            document.getElementById('organ-description').innerHTML = data.desc;
 
-      ctx.beginPath();
-      ctx.arc(cx + width/3, cy, 20, Math.PI * 1.5, Math.PI * 0.5, false);
-      ctx.fillStyle = '#1e293b';
-      ctx.fill();
-      ctx.stroke();
-      ctx.closePath();
-
-      ctx.fillStyle = '#94a3b8';
-      ctx.font = '10px sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText(labelText, cx, cy - 26);
-
-      ctx.restore();
-    }
-
-    canvas.addEventListener('mousemove', (e) => {
-      const rect = canvas.getBoundingClientRect();
-      const mx = e.clientX - rect.left;
-      const my = e.clientY - rect.top;
-
-      let hoveredParticle = null;
-      for (let p of particles) {
-        let d = Math.hypot(p.x - mx, p.y - my);
-        if (d <= p.radius + 5) {
-          hoveredParticle = p;
-          break;
+            ['acid', 'neutral', 'alkaline'].forEach(curveType => {
+                const el = document.getElementById(`curve-ph-${curveType}`);
+                if (curveType === data.activeCurve) {
+                    el.setAttribute('stroke-width', '3.5');
+                    el.setAttribute('stroke-dasharray', 'none');
+                    el.setAttribute('opacity', '1');
+                } else {
+                    el.setAttribute('stroke-width', '1.5');
+                    el.setAttribute('stroke-dasharray', '2');
+                    el.setAttribute('opacity', '0.25');
+                }
+            });
         }
-      }
 
-      if (hoveredParticle) {
-        tooltipTitle.textContent = hoveredParticle.label;
-        tooltipTitle.style.color = hoveredParticle.color;
-        tooltipDesc.textContent = hoveredParticle.desc;
-        canvasTooltip.style.left = `${hoveredParticle.x + 10}px`;
-        canvasTooltip.style.top = `${hoveredParticle.y + 10}px`;
-        canvasTooltip.classList.remove('hidden');
-      } else {
-        let hoveredChannel = null;
-        Object.values(channels).forEach(channel => {
-          if (mx >= channel.x - channel.width/2 && mx <= channel.x + channel.width/2 &&
-              my >= membraneY - 25 && my <= membraneY + 25) {
-            hoveredChannel = channel;
-          }
-        });
+        // ================= 實驗 3: 專一性動畫 =================
+        let isAnimePlaying = false;
+        function runKeyModel(subType) {
+            if (isAnimePlaying) return;
+            isAnimePlaying = true;
 
-        if (hoveredChannel) {
-          tooltipTitle.textContent = hoveredChannel.text;
-          tooltipTitle.style.color = hoveredChannel.color;
-          if (hoveredChannel.text === '橘色載體通道') {
-            tooltipDesc.textContent = '專門運送「葡萄糖」或「胺基酸」等特定小分子的蛋白質通道。具有專一性！';
-          } else if (hoveredChannel.text === '黃色離子通道') {
-            tooltipDesc.textContent = '專門運送「礦物質（如鈉、鉀、鈣離子）」的蛋白質通道。非專屬分子不能過。';
-          } else if (hoveredChannel.text === '綠色水通道') {
-            tooltipDesc.textContent = '專為「水分子」設計的蛋白質高速公路。讓水可以快速、大量進出。';
-          }
-          canvasTooltip.style.left = `${mx + 10}px`;
-          canvasTooltip.style.top = `${my + 10}px`;
-          canvasTooltip.classList.remove('hidden');
-        } else {
-          canvasTooltip.classList.add('hidden');
+            const sub = document.getElementById('anime-substrate');
+            const subSvg = document.getElementById('substrate-svg');
+            const subLabel = document.getElementById('substrate-label');
+            const spark = document.getElementById('anime-spark');
+            const desc = document.getElementById('anime-desc');
+
+            if (subType === 'starch') {
+                subSvg.innerHTML = `<path d="M 10,25 A 15,15 0 0,1 40,25 Z" fill="#fbbf24" stroke="#d97706" stroke-width="2"/>`;
+                subLabel.innerText = "澱粉分子";
+                desc.innerText = "⏳ 澱粉分子正在靠近唾液澱粉酶...";
+            } else {
+                subSvg.innerHTML = `<polygon points="25,5 45,40 5,40" fill="#f43f5e" stroke="#be123c" stroke-width="2"/>`;
+                subLabel.innerText = "蛋白質分子";
+                desc.innerText = "⏳ 蛋白質分子試圖與澱粉酶配對...";
+            }
+
+            sub.style.transform = 'translateX(-110px)';
+
+            setTimeout(() => {
+                if (subType === 'starch') {
+                    spark.style.opacity = '1';
+                    desc.innerHTML = "✨ <strong>形狀完全吻合！</strong>專一性配對成功，催化分解進行中！";
+                    
+                    setTimeout(() => {
+                        spark.style.opacity = '0';
+                        subSvg.innerHTML = `
+                            <circle cx="15" cy="25" r="7" fill="#10b981" stroke="#047857" stroke-width="1.5"/>
+                            <circle cx="35" cy="25" r="7" fill="#10b981" stroke="#047857" stroke-width="1.5"/>
+                        `;
+                        subLabel.innerText = "麥芽糖/葡萄糖產物";
+                        sub.style.transform = 'translateX(50px) translateY(-20px)';
+                        sub.style.opacity = '0';
+                        
+                        setTimeout(() => {
+                            desc.innerHTML = "♻️ <strong>化學反應成功！</strong>產物離開了。但綠色的澱粉酶依然完好，能<strong>重複</strong>催化下一批澱粉喔！";
+                            resetAnimeStage();
+                        }, 1500);
+                    }, 500);
+                } else {
+                    desc.innerHTML = "❌ <strong>立體結構不合！</strong>根據專一性，澱粉酶不理會蛋白質。無法產生反應！";
+                    sub.style.transform = 'translateX(-100px) rotate(12deg)';
+                    
+                    setTimeout(() => {
+                        sub.style.transform = 'translateX(50px) rotate(-25deg)';
+                        sub.style.opacity = '0';
+                        setTimeout(() => {
+                            resetAnimeStage();
+                        }, 1200);
+                    }, 1000);
+                }
+            }, 1000);
         }
-      }
-    });
 
-    canvas.addEventListener('mousedown', (e) => {
-      const rect = canvas.getBoundingClientRect();
-      const mx = e.clientX - rect.left;
-      const my = e.clientY - rect.top;
-
-      if (my < membraneY - 30) {
-        const types = ['glucose', 'water', 'gas'];
-        const randomType = types[Math.floor(Math.random() * types.length)];
-        particles.push(new Particle(randomType, mx, my));
-        playClickSound();
-      }
-    });
-
-    function animateSimulator() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      drawMembraneStructure();
-      particles.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      animationId = requestAnimationFrame(animateSimulator);
-    }
-
-    window.addEventListener('load', () => {
-      resizeCanvas();
-      animateSimulator();
-      initSortingGame();
-    });
-    window.addEventListener('resize', resizeCanvas);
-  </script>
-
-  <!-- ================= SUBSTANCE SORTING GAME SCRIPT ================= -->
-  <script>
-    const sortingSubstancesPool = [
-      { id: 'starch', name: '澱粉 (大分子)', icon: 'fa-cookie', class: 'amber', answers: ['A'] },
-      { id: 'protein', name: '蛋白質 (大分子)', icon: 'fa-egg', class: 'sky', answers: ['A'] },
-      { id: 'glucose', name: '葡萄糖 (小分子)', icon: 'fa-cube', class: 'orange', answers: ['C'] },
-      { id: 'amino_acid', name: '胺基酸 (小分子)', icon: 'fa-capsules', class: 'indigo', answers: ['C'] },
-      { id: 'mineral', name: '礦物質 (離子)', icon: 'fa-gem', class: 'yellow', answers: ['C'] },
-      { id: 'oxygen', name: '氧氣 (氣體)', icon: 'fa-wind', class: 'red', answers: ['B'] },
-      { id: 'co2', name: '二氧化碳 (氣體)', icon: 'fa-cloud-meatball', class: 'rose', answers: ['B'] },
-      { id: 'water', name: '水分子 (皆可過)', icon: 'fa-droplet', class: 'teal', answers: ['B', 'C'] } // Both direct & channel
-    ];
-
-    let currentSelectedId = null;
-    let studentSortingPlacements = { A: [], B: [], C: [] };
-
-    function initSortingGame() {
-      const container = document.getElementById('sortingItemsContainer');
-      container.innerHTML = '';
-      
-      const placedIds = [...studentSortingPlacements.A, ...studentSortingPlacements.B, ...studentSortingPlacements.C].map(item => item.id);
-      
-      sortingSubstancesPool.forEach(sub => {
-        if (!placedIds.includes(sub.id)) {
-          const card = document.createElement('div');
-          card.id = `sub-card-${sub.id}`;
-          card.onclick = () => selectSortingItem(sub.id);
-          card.className = `flex items-center gap-2 px-3 py-2.5 rounded-xl border-2 border-slate-200 cursor-pointer select-none transition-all duration-200 active:scale-95 bg-white shadow-sm hover:border-slate-400 font-bold text-xs md:text-sm w-full`;
-          
-          let colorClass = getBadgeColorClasses(sub.class);
-          
-          card.innerHTML = `
-            <span class="w-7 h-7 rounded-lg ${colorClass} flex items-center justify-center text-sm">
-              <i class="fas ${sub.icon}"></i>
-            </span>
-            <span class="text-slate-700 flex-grow">${sub.name}</span>
-          `;
-          container.appendChild(card);
+        function resetAnimeStage() {
+            setTimeout(() => {
+                const sub = document.getElementById('anime-substrate');
+                sub.style.transition = 'none';
+                sub.style.transform = 'none';
+                sub.style.opacity = '1';
+                sub.offsetHeight; // force reflow
+                sub.style.transition = 'all 1s ease-in-out';
+                isAnimePlaying = false;
+            }, 1000);
         }
-      });
 
-      currentSelectedId = null;
-      updateSortingStatus();
-    }
 
-    function getBadgeColorClasses(colorName) {
-      switch(colorName) {
-        case 'amber': return 'bg-amber-100 text-amber-700';
-        case 'sky': return 'bg-sky-100 text-sky-700';
-        case 'orange': return 'bg-orange-100 text-orange-700';
-        case 'indigo': return 'bg-indigo-100 text-indigo-700';
-        case 'yellow': return 'bg-yellow-100 text-yellow-700';
-        case 'red': return 'bg-red-100 text-red-700';
-        case 'rose': return 'bg-rose-100 text-rose-700';
-        case 'teal': return 'bg-teal-100 text-teal-700';
-        default: return 'bg-slate-100 text-slate-700';
-      }
-    }
+        // ================= ✏️ 測驗核心資料集 (簡化四選一) =================
+        const quizData = [
+            {
+                question: "生物體內主要扮演催化化學反應作用的酵素（又稱為酶），其最主要的「化學成分」是下列何者？",
+                options: [
+                    "醣類 (如多醣體、纖維素)",
+                    "蛋白質",
+                    "脂質 (如飽和、不飽和脂肪)",
+                    "核酸 (如 DNA、RNA)"
+                ],
+                correct: 1,
+                tag: "酵素的基本化學成分",
+                explanation: "酵素的最主要成分是【蛋白質】。也正是因為如此，酵素很容易受到周圍「溫度」和「酸鹼值（pH 值）」的影響而改變其立體形狀或完全失去功能。"
+            },
+            {
+                question: "將含有唾液澱粉酶的溶液在 100°C 沸水中加熱 10 分鐘，接著「冷卻降回最適合的 37°C」加進澱粉液中。請問澱粉會被分解嗎？",
+                options: [
+                    "會，因為溫度已經降回最適合的黃金溫度，酵素立刻就能完全恢復活性。",
+                    "不會，因為高溫已永久破壞酵素的蛋白質結構，使其徹底失去功能。",
+                    "會，因為酵素有重複催化性，冷卻後仍然可繼續被拿來使用。",
+                    "不會，因為 100°C 的熱水已將唾液澱粉酶全部稀釋溶解、不復存在。"
+                ],
+                correct: 1,
+                tag: "高溫對結構與活性的影響",
+                explanation: "過高的溫度（如 100°C）會【永久且不可逆】地破壞蛋白質結構。這時蛋白質結構如同被煎熟的蛋白凝固變性，即使重新冷卻，也絕對「無法」恢復原有的催化活性。"
+            },
+            {
+                question: "媽媽把買來的鮮魚放進 -18°C 的冷凍庫中保存。請問這種超低溫能防止魚肉腐敗的最主要物理原理為何？",
+                options: [
+                    "低溫只是暫時「降低」細菌體內酵素的活性（分子碰撞少），但並未破壞酵素結構。",
+                    "低溫能直接像高溫一樣，「破壞」細菌內分解酵素的蛋白質結構。",
+                    "冷凍庫內毫無水分，導致分解酵素無法溶解於液體中運作。",
+                    "低溫會使魚肉中的蛋白質改變形狀，轉化成不易腐敗的抗凍分子。"
+                ],
+                correct: 0,
+                tag: "低溫對活性的暫時抑制",
+                explanation: "低溫（如冷凍、冷藏）只是【暫時降低】酵素的分子運動活性（類似冬眠），它的蛋白質結構「完好如初」。只要解凍重新升溫，活性就會立刻恢復，所以冷凍只能延緩腐敗、不能消滅它。"
+            },
+            {
+                question: "將「胃蛋白酶」（最適合強酸環境）倒入一杯「澱粉液」中，在酸鹼值 pH=2 且水溫 37°C 的條件下進行試驗。請問此時澱粉能順利被分解嗎？",
+                options: [
+                    "能，因為溫度與強酸性此時都是胃蛋白酶最頂峰的工作環境。",
+                    "不能，因為胃蛋白酶具有「專一性」，它的立體構造只認蛋白質，絕對不能分解澱粉。",
+                    "能，因為在 pH=2 的完美環境下，胃蛋白酶會轉變為萬能分解催化劑。",
+                    "不能，因為酸性水溶液會阻擋任何酵素進行催化分解反應。"
+                ],
+                correct: 1,
+                tag: "酵素的專一性 (鎖鑰配對)",
+                explanation: "酵素具有非常神聖且高度的【專一性】。胃液中的胃蛋白酶，其口袋形狀只和蛋白質契合，所以即使環境再好，它也絕對碰不了澱粉。"
+            },
+            {
+                question: "酵素在化學反應的前後（例如分解完澱粉後），本身會發生什麼實質變化？",
+                options: [
+                    "酵素與反應產物完美融合，化學性質改變且被一次性消耗殆盡。",
+                    "酵素在反應前後其質量與結構皆「保持原樣」，因此可以被重複催化使用。",
+                    "酵素會分裂成多個小催化因子，藉此提高生物體內的催化面積。",
+                    "酵素本身的蛋白質外皮會被融化，轉化成化學能量儲存進生物體。"
+                ],
+                correct: 1,
+                tag: "酵素的重複利用性",
+                explanation: "酵素在化學反應中僅僅只是個「幫忙加速的平台（催化劑）」。反應前後，它本身的「質量」與「化學結構」完全【不會發生任何改變】，所以具有【重複性】。"
+            },
+            {
+                question: "關於酵素（酶）在進行化學反應的位置，下列觀念何者「最正確」？",
+                options: [
+                    "酵素本身是蛋白質分子而非活細胞，因此在適當溫度與 pH 值下，在「試管（體外）」中同样能發揮催化作用。",
+                    "酵素必須在活著的細胞體內、配合生命跡象，才可能發生化學催化效能。",
+                    "酵素一離開生物體就會立刻死亡，所以試管實驗只可能靠酸鹼催化反應。",
+                    "酵素只有在口腔中才能進行體外反應，胃液或小腸液等體內酵素無法在體外工作。"
+                ],
+                correct: 0,
+                tag: "體外反應迷思",
+                explanation: "很多人誤以為酵素要活在體內才能作用。事實上，酵素是【非生命分子（蛋白質）】。只要在試管中能將「水溫」與「酸鹼值」微調成與生物體內相同，不論在哪它都可以發揮催化性能！"
+            },
+            {
+                question: "植物吸收水分與二氧化碳，在細胞內合成大分子的葡萄糖。此種從小分子組裝合成大分子的過程叫作什麼作用？通常能量的狀態為何？",
+                options: [
+                    "分解作用；此過程會將小分子裂解並釋放出熱量與化學能。",
+                    "合成作用；此過程像蓋房子，通常需要吸收能量才能進行。",
+                    "分解作用；此過程需要吸收環境中的熱量與光能。",
+                    "合成作用；此過程會一邊合成一邊對細胞外釋放出大量能量。"
+                ],
+                correct: 1,
+                tag: "代謝作用：合成",
+                explanation: "代謝中的【合成作用】就是指把「小分子原料」組裝、串聯成「大分子產物」的化學過程（如：製造葡萄糖、葡萄糖合成澱粉），此過程必然要【吸收（消耗）能量】。"
+            },
+            {
+                question: "生物體內的「呼吸作用」，是將大分子的葡萄糖進行一連串反應，生成二氧化碳、水，並將能量轉換出來供細胞生存。這屬於什麼作用？",
+                options: [
+                    "分解作用，此過程會將大分子裂解，並伴隨能量的釋放。",
+                    "合成作用，此過程會消耗能量以聚合出葡萄糖分子。",
+                    "分解作用，此過程在裂解葡萄糖分子時需要吸收外在熱能。",
+                    "合成作用，此過程會把葡萄糖融合成多個小分子以儲存熱量。"
+                ],
+                correct: 0,
+                tag: "代謝作用：分解",
+                explanation: "代謝中的【分解作用】是將「大分子」裂開降解成「小分子」（如：消化、呼吸作用），這個打碎、撕裂大分子鍵結的過程，會把內部儲存的能量【釋放出來】。"
+            }
+        ];
 
-    function selectSortingItem(id) {
-      playClickSound();
-      if (currentSelectedId) {
-        const prev = document.getElementById(`sub-card-${currentSelectedId}`);
-        if (prev) prev.className = prev.className.replace('border-teal-500', 'border-slate-200');
-      }
+        let curQIndex = 0;
+        let finalScore = 0;
+        let selectedOpt = null;
+        let badList = []; // 儲存答錯題目，生成診斷
 
-      currentSelectedId = id;
-      const card = document.getElementById(`sub-card-${id}`);
-      if (card) {
-        card.className = card.className.replace('border-slate-200', 'border-teal-500');
-        card.classList.add('ring-2', 'ring-teal-200');
-      }
-
-      showToast('已選取物質', '請再點選右側三個分類框之一，進行歸位！', 'info');
-    }
-
-    function assignToCategory(catId) {
-      if (!currentSelectedId) {
-        showToast('請先點選左側物質', '要先在待分類區選好卡片，才能放進去喔！', 'error');
-        playWrongSound();
-        return;
-      }
-
-      const item = sortingSubstancesPool.find(sub => sub.id === currentSelectedId);
-      if (!item) return;
-
-      if (studentSortingPlacements[catId].some(placed => placed.id === item.id)) {
-        showToast('已經放過囉', `「${item.name}」已經在該分類中了。`, 'info');
-        return;
-      }
-
-      playClickSound();
-      studentSortingPlacements[catId].push(item);
-      renderCategoryList(catId);
-      initSortingGame();
-    }
-
-    function renderCategoryList(catId) {
-      const container = document.getElementById(`cat-list-${catId}`);
-      container.innerHTML = '';
-
-      studentSortingPlacements[catId].forEach((item, idx) => {
-        const itemBadge = document.createElement('div');
-        itemBadge.className = "flex justify-between items-center bg-white border border-slate-200 shadow-sm rounded-lg px-2.5 py-1.5 text-xs font-bold transition-all";
-        
-        let colorClass = getBadgeColorClasses(item.class);
-
-        itemBadge.innerHTML = `
-          <div class="flex items-center gap-1.5">
-            <span class="w-5 h-5 rounded ${colorClass} flex items-center justify-center text-[10px]">
-              <i class="fas ${item.icon}"></i>
-            </span>
-            <span>${item.name.split(' ')[0]}</span>
-          </div>
-          <button onclick="removeItemFromPlacement('${catId}', ${idx}); event.stopPropagation();" class="text-slate-400 hover:text-red-500 transition px-1">
-            <i class="fas fa-xmark"></i>
-          </button>
-        `;
-        container.appendChild(itemBadge);
-      });
-      updateSortingStatus();
-    }
-
-    function removeItemFromPlacement(catId, index) {
-      playClickSound();
-      studentSortingPlacements[catId].splice(index, 1);
-      renderCategoryList(catId);
-      initSortingGame();
-    }
-
-    function updateSortingStatus() {
-      const placedCount = studentSortingPlacements.A.length + studentSortingPlacements.B.length + studentSortingPlacements.C.length;
-      const progressPercent = (placedCount / 8) * 100;
-      
-      document.getElementById('sortingProgress').style.width = `${progressPercent}%`;
-      document.getElementById('sortingCounter').textContent = `已分類: ${placedCount} / 8`;
-    }
-
-    function resetSortingGame() {
-      playSynthSound([150], [0.2], 'sawtooth');
-      studentSortingPlacements = { A: [], B: [], C: [] };
-      renderCategoryList('A');
-      renderCategoryList('B');
-      renderCategoryList('C');
-      initSortingGame();
-      document.getElementById('sortingScore').textContent = `正確率: 0%`;
-      showToast('挑戰重置', '你可以重新進行物質分類囉！', 'info');
-    }
-
-    let lastSortingScorePct = 0;
-
-    function verifySortingGame() {
-      let totalCorrect = 0;
-      let totalAssigned = 0;
-      let mistakes = [];
-
-      ['A', 'B', 'C'].forEach(cat => {
-        studentSortingPlacements[cat].forEach(item => {
-          totalAssigned++;
-          if (item.answers.includes(cat)) {
-            totalCorrect++;
-          } else {
-            mistakes.push(item.name.split(' ')[0]);
-          }
-        });
-      });
-
-      const waterPlaced = [...studentSortingPlacements.A, ...studentSortingPlacements.B, ...studentSortingPlacements.C].filter(i => i.id === 'water');
-      let waterSpecialBonus = false;
-      if (waterPlaced.length > 1) {
-        waterSpecialBonus = true; 
-      }
-
-      const totalElementsExpected = 8;
-      
-      if (totalAssigned === 0) {
-        showToast('空空的喔！', '請先把左邊的物質放入分類框中再檢查！', 'error');
-        playWrongSound();
-        return;
-      }
-
-      let scorePercentage = Math.round((totalCorrect / Math.max(totalElementsExpected, totalAssigned)) * 100);
-      if (waterSpecialBonus && scorePercentage < 100) {
-        scorePercentage = Math.min(100, scorePercentage + 10); 
-      }
-      
-      lastSortingScorePct = scorePercentage;
-      document.getElementById('sortingScore').textContent = `正確率: ${scorePercentage}%`;
-
-      if (scorePercentage === 100) {
-        playCorrectSound();
-        showToast('太完美了！完全答對！', '你真棒！完全分清楚大分子分解、直接穿透與走特殊蛋白質通道的觀念了！', 'success');
-      } else if (scorePercentage >= 75) {
-        playCorrectSound();
-        showToast('非常好！接近完美！', `正確率達 ${scorePercentage}%。有些微小迷思（如：${mistakes.join('、')}）可以再調整看看喔！`, 'success');
-      } else {
-        playWrongSound();
-        showToast('再接再厲！', `正確率為 ${scorePercentage}%。想想看，澱粉是巨大分子需要分解，氣體是直接穿透。再試一次吧！`, 'error');
-      }
-    }
-  </script>
-
-  <!-- ================= QUIZ CONCEPTION DIAGNOSTIC SCRIPT ================= -->
-  <script>
-    const quizQuestions = [
-      {
-        question: "1. 關於「擴散作用」這項自然現象，下列敘述何者正確？",
-        options: [
-          "擴散作用必須靠細胞消耗能量（ATP）來主動運送物質",
-          "擴散作用不需消耗細胞能量，物質會自發由濃度高往濃度低移動",
-          "只有固體物質才會擴散，氣體分子完全不會發生擴散作用",
-          "必須在有光的環境下，細胞內才能進行擴散作用"
-        ],
-        correct: 1,
-        dim: 2, 
-        explanation: "擴散作用是物理學中的自然現象。**分子會自發由濃度高（多）往濃度低（少）的方向移動，直到均勻為止，不需消耗細胞任何能量**。直接穿透或走蛋白質通道都屬於這種不需要耗能的移動方式！"
-      },
-      {
-        question: "2. 食物中的「澱粉」和肉類中的「蛋白質」屬於大分子，為什麼不能直接通過細胞膜？",
-        options: [
-          "因為它們是小分子，不需要穿透細胞膜就可以被直接吸收",
-          "因為它們分子太大，直接被細胞膜阻擋在外。必須先消化分解成小分子才能進出細胞",
-          "因為它們具有毒性，所以細胞膜會主動把它們排除在外",
-          "因為它們是油溶性的，會溶解在脂質雙分子層裡面出不來"
-        ],
-        correct: 1,
-        dim: 1, 
-        explanation: "米飯裡的**澱粉**與肉類的**蛋白質**都是「巨大分子」，因為**體積太大**，完全無法通過膜。人體必須經由消化系統（澱粉 $\rightarrow$ 葡萄糖；蛋白質 $\rightarrow$ 胺基酸）分解為小分子，才能順利跨過膜被細胞吸收。"
-      },
-      {
-        question: "3. 當我們深吸一口氣時，肺泡與血管之間進行「氧氣」和「二氧化碳」的交換，它是透過什麼方式進出細胞膜？",
-        options: [
-          "氣體分子直接穿透脂質細胞膜進行擴散",
-          "氣體分子必須透過特定的蛋白質通道才能進入",
-          "細胞必須用吸塵器一樣消耗大量能量來強行吸入氣體",
-          "氣體分子是溶解在大量的水中，伴隨水分一同流進來的"
-        ],
-        correct: 0,
-        dim: 2, 
-        explanation: "氧氣、二氧化碳等氣體分子**尺寸非常小**，而且可以和脂質相容，所以**不需任何蛋白質通道協助**，就能**直接穿透**細胞膜進出。這也是最簡單的擴散形式。"
-      },
-      {
-        question: "4. 牛奶被分解後的「胺基酸」與米飯被分解後的「葡萄糖」都是小分子，牠們要怎麼進出細胞？",
-        options: [
-          "因為是小分子，可以直接硬擠、穿透細胞膜",
-          "必須走膜上特定的「特殊蛋白質通道」才能進出",
-          "必須耗能將其轉化為小分子氣體，再自然吸入",
-          "小分子完全不需要進入細胞，會在血管中直接發揮作用"
-        ],
-        correct: 1,
-        dim: 1, 
-        explanation: "葡萄糖、胺基酸雖然已經被分解為「小分子」了，但它們無法跟脂質起化學相容（親水性），所以無法直接穿過膜，必須走膜上的**「特殊蛋白質通道」**。這依然是不耗能的擴散現象！"
-      },
-      {
-        question: "5. 關於日常重要的「水分子」進出細胞膜的管道，下列哪一個說法最棒、最精確？",
-        options: [
-          "水分子只能走綠色的特殊水通道蛋白，不能直接穿透膜",
-          "水分子太大無法進出細胞，細胞只能靠口乾舌燥來補充水分",
-          "水分子非常小，既可以直接穿透細胞膜，也可以走蛋白質通道快速進出",
-          "水分子必須由細胞主動消耗大量熱量，才能透過幫浦打進細胞"
-        ],
-        correct: 2,
-        dim: 3, 
-        explanation: "水分子是生物體內最獨特的存在！它分子極小，**既可以「直接穿透細胞膜」**（速度慢一點），細胞膜上也有設置特別高規格的**「水通道蛋白通道」**（速度極快）。兩種方式都行得通，完全不耗能！"
-      },
-      {
-        question: "6. 老師說特殊蛋白質通道具有「專一性」，這是什麼意思呢？",
-        options: [
-          "一種蛋白質通道在全身的細胞膜上都長得一模一樣，沒有任何差別",
-          "蛋白質通道就像特定的鎖，只有匹配的「特定分子」才能從它那裡通過",
-          "蛋白質通道只在 37度C 的特定體溫下才會偶爾開啟",
-          "這種通道只在晚上睡覺時才會開啟，白天完全關閉"
-        ],
-        correct: 1,
-        dim: 4, 
-        explanation: "**專一性（Specificity）**指的是鎖鑰關係。例如膜上專門運送「葡萄糖」的蛋白質通道，就只會讓葡萄糖通過，其他像胺基酸、礦物質離子等，通通被會擋下，不能共用同一個通道。"
-      },
-      {
-        question: "7. 礦物質（例如食鹽中的鈉離子、離子等）非常小，牠們可以直接穿透脂質細胞膜嗎？",
-        options: [
-          "可以，只要分子小就可以毫無阻攔地直接穿過脂質細胞膜",
-          "不可以，因為離子帶有電荷，會被脂質細胞膜排斥，一定要走「特殊蛋白質通道」",
-          "不可以，礦物質必須先在體外被水解酶煮沸分解才能進出",
-          "礦物質不是生物所需物質，細胞膜完全不允許它接近"
-        ],
-        correct: 1,
-        dim: 4, 
-        explanation: "礦物質（例如鈉、鉀離子）分子量雖小，但因為帶有顯著電荷，無法穿過斥水性的膜核心。因此，**絕對不能直接穿透細胞膜**，必須經由黃色等特定的**「離子通道蛋白質」**協助進出。"
-      },
-      {
-        question: "8. 媽媽把切好的小黃瓜灑上大量的鹽巴，放了一陣子後，小黃瓜周邊流出了大量的水，自己也萎縮了。這種水分跨膜擴散的現象稱為？",
-        options: [
-          "滲透作用，水分由水多的地方擴散到水少的地方",
-          "主動吞噬，小黃瓜細胞主動把水吐出去",
-          "光合作用，葉綠素吸收陽光使水蒸發",
-          "破壞作用，食鹽將細胞膜完全融化導致水漏出來"
-        ],
-        correct: 0,
-        dim: 3, 
-        explanation: "水分子的擴散作用有一個專屬的名詞叫做**「滲透作用」**。當外面撒了鹽（外液濃度高、水分子相對少），細胞內的水濃度較高。水分子就會順著濃度差擴散出細胞外（水多的地方往水少的地方流），導致細胞脫水萎縮。"
-      }
-    ];
-
-    let currentQuestionIdx = 0;
-    let quizScore = 0;
-    let quizActive = false;
-    let answersTimeline = []; 
-
-    function startQuiz() {
-      playClickSound();
-      document.getElementById('quiz-intro').classList.add('hidden');
-      document.getElementById('quiz-play').classList.remove('hidden');
-      currentQuestionIdx = 0;
-      quizScore = 0;
-      answersTimeline = [];
-      quizActive = true;
-      showQuestion();
-    }
-
-    function showQuestion() {
-      const q = quizQuestions[currentQuestionIdx];
-      
-      document.getElementById('quiz-progress-text').textContent = `問題 ${currentQuestionIdx + 1} / ${quizQuestions.length}`;
-      document.getElementById('quiz-score-badge').textContent = `目前得分: ${quizScore} 分`;
-      
-      const percent = ((currentQuestionIdx) / quizQuestions.length) * 100;
-      document.getElementById('quiz-progress-bar').style.width = `${percent}%`;
-
-      document.getElementById('quiz-question-text').textContent = q.question;
-
-      const container = document.getElementById('quiz-options-container');
-      container.innerHTML = '';
-
-      q.options.forEach((opt, idx) => {
-        const btn = document.createElement('button');
-        btn.onclick = () => selectOption(idx);
-        btn.className = "w-full text-left p-4 rounded-xl border border-slate-200 hover:border-teal-500 hover:bg-teal-50/30 font-semibold text-slate-700 transition active:scale-99 text-xs md:text-sm flex items-start gap-3 group";
-        
-        const prefix = ['A', 'B', 'C', 'D'][idx];
-        btn.innerHTML = `
-          <span class="flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 group-hover:bg-teal-100 group-hover:text-teal-700 text-slate-500 font-bold flex items-center justify-center text-xs transition">
-            ${prefix}
-          </span>
-          <span class="flex-grow">${opt}</span>
-        `;
-        container.appendChild(btn);
-      });
-
-      document.getElementById('quiz-explanation-panel').classList.add('hidden');
-    }
-
-    function selectOption(selectedIdx) {
-      if (!quizActive) return;
-      quizActive = false;
-
-      const q = quizQuestions[currentQuestionIdx];
-      const isCorrect = (selectedIdx === q.correct);
-      
-      answersTimeline.push({
-        dim: q.dim,
-        correct: isCorrect
-      });
-
-      const expPanel = document.getElementById('quiz-explanation-panel');
-      const icon = document.getElementById('explanation-status-icon');
-      const title = document.getElementById('explanation-title');
-      const text = document.getElementById('explanation-text');
-
-      const buttons = document.getElementById('quiz-options-container').children;
-      for (let i = 0; i < buttons.length; i++) {
-        buttons[i].disabled = true;
-        const prefixSpan = buttons[i].querySelector('span');
-        if (i === q.correct) {
-          buttons[i].className = "w-full text-left p-4 rounded-xl border-2 border-green-500 bg-green-50 text-slate-800 font-bold text-xs md:text-sm flex items-start gap-3";
-          prefixSpan.className = "flex-shrink-0 w-6 h-6 rounded-full bg-green-500 text-white font-bold flex items-center justify-center text-xs";
-        } else if (i === selectedIdx) {
-          buttons[i].className = "w-full text-left p-4 rounded-xl border-2 border-red-500 bg-red-50 text-slate-800 font-bold text-xs md:text-sm flex items-start gap-3";
-          prefixSpan.className = "flex-shrink-0 w-6 h-6 rounded-full bg-red-500 text-white font-bold flex items-center justify-center text-xs";
-        } else {
-          buttons[i].className = "w-full text-left p-4 rounded-xl border border-slate-100 bg-slate-50/50 text-slate-400 text-xs md:text-sm flex items-start gap-3";
-          prefixSpan.className = "flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 text-slate-300 flex items-center justify-center text-xs";
+        function startWizardQuiz() {
+            document.getElementById('quiz-start-view').classList.add('hidden');
+            document.getElementById('quiz-play-view').classList.remove('hidden');
+            curQIndex = 0;
+            finalScore = 0;
+            badList = [];
+            loadWizardQuestion();
         }
-      }
 
-      if (isCorrect) {
-        quizScore += 12.5; // 8 questions = 100 max
-        playCorrectSound();
-        expPanel.className = "mt-6 p-4 rounded-xl border border-green-200 bg-green-50/50 transition-all duration-300";
-        icon.className = "w-7 h-7 rounded-full bg-green-500 text-white flex items-center justify-center text-sm flex-shrink-0";
-        icon.innerHTML = '<i class="fas fa-check"></i>';
-        title.className = "font-bold text-green-800 text-base";
-        title.textContent = "答案正確！真聰明！";
-      } else {
-        playWrongSound();
-        expPanel.className = "mt-6 p-4 rounded-xl border border-red-200 bg-red-50/50 transition-all duration-300";
-        icon.className = "w-7 h-7 rounded-full bg-red-500 text-white flex items-center justify-center text-sm flex-shrink-0";
-        icon.innerHTML = '<i class="fas fa-triangle-exclamation"></i>';
-        title.className = "font-bold text-red-800 text-base";
-        title.textContent = `答錯囉！正確答案是 (${['A','B','C','D'][q.correct]})`;
-      }
+        function loadWizardQuestion() {
+            selectedOpt = null;
+            const q = quizData[curQIndex];
 
-      text.innerHTML = q.explanation;
-      expPanel.classList.remove('hidden');
+            // 進度與計分
+            document.getElementById('quiz-progress-text').innerText = `${curQIndex + 1} / ${quizData.length}`;
+            const percent = ((curQIndex + 1) / quizData.length) * 100;
+            document.getElementById('quiz-progress-bar').style.width = `${percent}%`;
+            document.getElementById('quiz-score-badge').innerText = `${Math.round(finalScore)} 分`;
 
-      const nextBtn = document.getElementById('next-quest-btn');
-      if (currentQuestionIdx === quizQuestions.length - 1) {
-        nextBtn.innerHTML = `查看結算成果 <i class="fas fa-square-poll-vertical ml-1"></i>`;
-      } else {
-        nextBtn.innerHTML = `下一題 <i class="fas fa-arrow-right ml-1"></i>`;
-      }
-    }
+            // 題文與題號
+            document.getElementById('q-number').innerText = curQIndex + 1;
+            document.getElementById('quiz-question-text').innerText = q.question;
 
-    function nextQuestion() {
-      playClickSound();
-      if (currentQuestionIdx < quizQuestions.length - 1) {
-        currentQuestionIdx++;
-        quizActive = true;
-        showQuestion();
-      } else {
-        showToast('特訓測驗完成！', `恭喜完成所有測驗，獲得了 ${Math.round(quizScore)} 分！`, 'success');
-        switchTab('certificate');
-      }
-    }
-  </script>
+            // 渲染 4 選 1 按鈕
+            const optionsGroup = document.getElementById('quiz-options-container');
+            optionsGroup.innerHTML = '';
 
-  <!-- ================= LEARNING ANALYTICS & CERTIFICATE SCRIPT ================= -->
-  <script>
-    function updateAnalytics() {
-      let dimScores = { 1: 0, 2: 0, 3: 0, 4: 0 };
-      let dimCounts = { 1: 0, 2: 0, 3: 0, 4: 0 };
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.id = `q-opt-btn-${idx}`;
+                btn.onclick = () => selectWizardOption(idx);
+                btn.className = "w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-slate-300 bg-white text-slate-700 text-xs md:text-sm font-bold transition-all duration-200 active:scale-98 shadow-sm flex justify-between items-center";
+                btn.innerHTML = `<span>${String.fromCharCode(65 + idx)}. ${opt}</span><span id="q-icon-${idx}" class="text-xs font-black text-transparent"></span>`;
+                optionsGroup.appendChild(btn);
+            });
 
-      // Initialize base values from quiz timeline
-      answersTimeline.forEach(ans => {
-        dimCounts[ans.dim]++;
-        if (ans.correct) {
-          dimScores[ans.dim]++;
+            // 隱藏解析和下一步
+            document.getElementById('quiz-explanation-card').classList.add('hidden');
+            document.getElementById('quiz-next-btn').classList.add('hidden');
         }
-      });
 
-      // Factor in sorting game answers too
-      // Check Starch and Protein inside A
-      dimCounts[1] += 2;
-      if (studentSortingPlacements.A.some(i => i.id === 'starch')) dimScores[1]++;
-      if (studentSortingPlacements.A.some(i => i.id === 'protein')) dimScores[1]++;
+        function selectWizardOption(idx) {
+            if (selectedOpt !== null) return;
+            selectedOpt = idx;
 
-      // Check simple diffusion gases in B
-      dimCounts[2] += 2;
-      if (studentSortingPlacements.B.some(i => i.id === 'oxygen')) dimScores[2]++;
-      if (studentSortingPlacements.B.some(i => i.id === 'co2')) dimScores[2]++;
+            const q = quizData[curQIndex];
+            const correctIdx = q.correct;
 
-      // Check water in BOTH B and C
-      dimCounts[3] += 2;
-      const waterInB = studentSortingPlacements.B.some(i => i.id === 'water');
-      const waterInC = studentSortingPlacements.C.some(i => i.id === 'water');
-      if (waterInB) dimScores[3]++;
-      if (waterInC) dimScores[3]++;
+            // 顯示解析
+            document.getElementById('quiz-explanation-text').innerText = q.explanation;
+            document.getElementById('quiz-explanation-card').classList.remove('hidden');
 
-      // Check Specificity
-      dimCounts[4] += 2;
-      if (studentSortingPlacements.C.some(i => i.id === 'glucose')) dimScores[4]++;
-      if (studentSortingPlacements.C.some(i => i.id === 'mineral')) dimScores[4]++;
+            q.options.forEach((_, optIdx) => {
+                const btn = document.getElementById(`q-opt-btn-${optIdx}`);
+                const icon = document.getElementById(`q-icon-${optIdx}`);
+                btn.disabled = true;
 
-      // Set dimensions percentages dynamically
-      for (let i = 1; i <= 4; i++) {
-        let pct = dimCounts[i] > 0 ? Math.round((dimScores[i] / dimCounts[i]) * 100) : 0;
-        pct = Math.min(100, pct);
-        
-        document.getElementById(`scoreDim${i}`).textContent = `${pct}%`;
-        document.getElementById(`barDim${i}`).style.width = `${pct}%`;
-      }
+                if (optIdx === correctIdx) {
+                    btn.className = "w-full text-left p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-50 text-emerald-800 text-xs md:text-sm font-black flex justify-between items-center transition-all";
+                    icon.innerText = "✓ 正確";
+                    icon.className = "text-[11px] font-extrabold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full";
+                } else if (optIdx === idx) {
+                    btn.className = "w-full text-left p-4 rounded-2xl border-2 border-red-500 bg-red-50 text-red-800 text-xs md:text-sm font-black flex justify-between items-center transition-all";
+                    icon.innerText = "✗ 答錯";
+                    icon.className = "text-[11px] font-extrabold text-red-700 bg-red-100 px-2 py-0.5 rounded-full";
+                } else {
+                    btn.className = "w-full text-left p-4 rounded-2xl border border-slate-100 bg-white text-slate-300 text-xs md:text-sm font-normal opacity-50 flex justify-between items-center";
+                }
+            });
 
-      // Map to certificate stats too
-      document.getElementById('certSortingScore').textContent = `${lastSortingScorePct} %`;
-      document.getElementById('certQuizScore').textContent = `${Math.round(quizScore)} 分`;
-      
-      const today = new Date();
-      document.getElementById('certDate').textContent = `發證日期：${today.getFullYear()}/${String(today.getMonth()+1).padStart(2,'0')}/${String(today.getDate()).padStart(2,'0')}`;
-    }
+            if (idx === correctIdx) {
+                finalScore += (100 / quizData.length);
+            } else {
+                badList.push(q);
+            }
 
-    function generateCertificate() {
-      playCorrectSound();
-      const nameInput = document.getElementById('studentNameInput').value.trim();
-      const certName = document.getElementById('certStudentName');
-      
-      if (nameInput) {
-        certName.textContent = nameInput;
-        showToast('證書已製作', `特訓生 ${nameInput} 的專屬榮譽證書製作完成！`, 'success');
-      } else {
-        certName.textContent = "九年級生物特訓生";
-        showToast('請輸入姓名', '使用預設名稱生成證書中。', 'info');
-      }
-      updateAnalytics();
-    }
-  </script>
+            // 更新計分與下一步按鈕
+            document.getElementById('quiz-score-badge').innerText = `${Math.round(finalScore)} 分`;
+            const nextBtn = document.getElementById('quiz-next-btn');
+            nextBtn.classList.remove('hidden');
+            if (curQIndex === quizData.length - 1) {
+                nextBtn.innerHTML = "<span>看診斷報告</span> ➔";
+            } else {
+                nextBtn.innerHTML = "<span>下一題</span> ➔";
+            }
+        }
+
+        function nextWizardQuestion() {
+            if (curQIndex < quizData.length - 1) {
+                curQIndex++;
+                const container = document.getElementById('quiz-question-container');
+                container.classList.remove('fade-in');
+                void container.offsetWidth; // reflow to reset anim
+                container.classList.add('fade-in');
+                loadWizardQuestion();
+            } else {
+                showQuizResults();
+            }
+        }
+
+        function showQuizResults() {
+            document.getElementById('quiz-play-view').classList.add('hidden');
+            const resultScreen = document.getElementById('quiz-result-view');
+            resultScreen.classList.remove('hidden');
+
+            const scoreRound = Math.round(finalScore);
+            document.getElementById('quiz-final-score').innerText = scoreRound;
+
+            const feedbackEl = document.getElementById('quiz-result-feedback');
+            const weaknessSection = document.getElementById('quiz-weakness-section');
+            const weaknessList = document.getElementById('quiz-weakness-list');
+            weaknessList.innerHTML = '';
+
+            if (scoreRound === 100) {
+                feedbackEl.innerHTML = "🎯 <strong>完美全對！會考大師就是你！</strong>你已完全參透酵素的所有關鍵盲點！專一性、高溫永久受損、體外也能作用等知識，均難不倒你！會考此單元基本穩拿！";
+                weaknessSection.classList.add('hidden');
+            } else {
+                weaknessSection.classList.remove('hidden');
+                
+                if (scoreRound >= 75) {
+                    feedbackEl.innerHTML = "👍 <strong>實力很讚！基礎非常穩健。</strong>多數的重要核心你都答對了。只剩一兩處被文字陷阱誘騙，把下方的弱點與觀念記起來，就能順利拼上滿分！";
+                } else if (scoreRound >= 50) {
+                    feedbackEl.innerHTML = "⚠️ <strong>觀念有點模糊囉！</strong>在遇到高低溫影響、重複使用性，或是代謝作用分類時，你容易產生混淆。強烈建議你至『互動實驗室』手動拉動溫度和器官做對照，重新建立正確觀念。";
+                } else {
+                    feedbackEl.innerHTML = "📚 <strong>別氣餒！這是最棒的觀念重整機會！</strong>此大題是會考的『基本分』來源，現在錯代表可以及早矯正。看懂下方幫你條列出的弱點引導，多看兩遍，你絕對能考得更好！";
+                }
+
+                badList.forEach(q => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<strong>【${q.tag}】</strong>：${getWeaknessText(q.tag)}`;
+                    weaknessList.appendChild(li);
+                });
+            }
+        }
+
+        function getWeaknessText(tag) {
+            switch(tag) {
+                case "酵素的基本化學成分":
+                    return "酵素並非醣類，主要成分是「蛋白質」，因此對溫度、酸鹼度異常敏感。";
+                case "高溫對結構與活性的影響":
+                    return "100°C 高溫會「永久破壞（變性）」蛋白質結構。即使冷卻回 37°C，也「無法再恢復活性」。";
+                case "低溫對活性的暫時抑制":
+                    return "低溫只會「降活性（使其睡著）」，但蛋白質結構並「未被破壞」。回溫就能再度活化。";
+                case "酵素的專一性 (鎖鑰配對)":
+                    return "一對一配對。胃蛋白酶只分解蛋白質，對澱粉完全沒輒。";
+                case "酵素的重複利用性":
+                    return "酵素反應後本身「完全不變」，質量也沒變，故可以重複使用。";
+                case "體外反應迷思":
+                    return "酵素不等於活細胞。只要環境（水溫、pH）給得恰當，在試管（體外）中一樣可以運作。";
+                case "代謝作用：合成":
+                    return "小分子併成大分子的過程（如葡萄糖變澱粉）叫作「合成作用」，這需要「吸收能量」。";
+                case "代謝作用：分解":
+                    return "大分子切成小分子的過程（如呼吸作用分解葡萄糖）叫作「分解作用」，這會「釋放能量」。";
+                default:
+                    return "請重新詳閱觀念補給內容。";
+            }
+        }
+
+        function resetWizardQuiz() {
+            document.getElementById('quiz-result-view').classList.add('hidden');
+            startWizardQuiz();
+        }
+
+        // ================= 頁面初始化 =================
+        window.onload = function() {
+            updateTemperature(37);
+            selectOrgan('mouth');
+        };
+    </script>
 </body>
 </html>
