@@ -36,10 +36,10 @@
       <div>
         <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold mb-2 tracking-wider">
           <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-          九年級生物會考總複習專用
+          國中生物會考與段考複習
         </div>
         <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight">細胞膜物質運輸 <span class="text-teal-200">解密特訓營</span></h1>
-        <p class="text-sm md:text-base text-cyan-100 mt-1">透過動態模擬與迷思診斷，快速釐清「擴散作用」與「穿透性」必考觀念！</p>
+        <p class="text-sm md:text-base text-cyan-100 mt-1">用最簡單的「直接穿透」與「走蛋白質通道」觀念，5分鐘釐清必考盲點！</p>
       </div>
       <div class="flex gap-2 bg-white/10 backdrop-blur-md p-1.5 rounded-xl border border-white/10">
         <button id="soundToggleBtn" onclick="toggleSound()" class="px-3 py-2 rounded-lg hover:bg-white/15 transition flex items-center gap-2 text-sm font-medium" title="切換音效">
@@ -60,10 +60,10 @@
         <i class="fas fa-boxes-stacked"></i> 物質分類大挑戰
       </button>
       <button onclick="switchTab('quiz')" id="tab-quiz" class="tab-btn px-5 py-4 border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-semibold text-sm md:text-base whitespace-nowrap flex items-center gap-2 transition">
-        <i class="fas fa-clipboard-question"></i> 迷思終結測驗
+        <i class="fas fa-clipboard-question"></i> 觀念簡單測驗
       </button>
       <button onclick="switchTab('certificate')" id="tab-certificate" class="tab-btn px-5 py-4 border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-semibold text-sm md:text-base whitespace-nowrap flex items-center gap-2 transition">
-        <i class="fas fa-certificate"></i> 特訓成果與證書
+        <i class="fas fa-certificate"></i> 成果雷達與證書
       </button>
     </div>
   </div>
@@ -80,10 +80,10 @@
           <div class="flex justify-between items-center mb-4">
             <h2 class="text-lg md:text-xl font-bold flex items-center gap-2 text-slate-800">
               <span class="w-2.5 h-6 bg-teal-500 rounded-full"></span>
-              細胞膜動態運輸模擬器
+              細胞膜物質進出模擬
             </h2>
             <div class="flex items-center gap-2 text-xs bg-teal-50 text-teal-700 font-medium px-2.5 py-1 rounded-full">
-              <i class="fas fa-circle-info"></i> 點擊下方按鈕投放分子，觀察其跨膜行為
+              <i class="fas fa-circle-info"></i> 點擊下方分子按鈕投放，看它們怎麼過膜
             </div>
           </div>
           
@@ -93,13 +93,13 @@
             
             <!-- Dynamic Labels overlay -->
             <div class="absolute top-3 left-4 pointer-events-none bg-slate-900/80 backdrop-blur-sm px-2.5 py-1 rounded text-xs text-slate-400 border border-slate-800 font-bold">
-              細胞外 (高濃度區)
+              細胞外 (濃度高)
             </div>
             <div class="absolute bottom-3 left-4 pointer-events-none bg-slate-900/80 backdrop-blur-sm px-2.5 py-1 rounded text-xs text-slate-400 border border-slate-800 font-bold">
-              細胞內 (低濃度區)
+              細胞內 (濃度低)
             </div>
             <div class="absolute top-[43%] right-4 pointer-events-none bg-slate-900/80 backdrop-blur-sm px-2.5 py-1 rounded text-xs text-slate-400 border border-slate-800 font-bold">
-              細胞膜 (磷脂雙分子層)
+              細胞膜
             </div>
             
             <!-- Dynamic Info Panel in Canvas -->
@@ -137,7 +137,7 @@
             <div class="flex items-center gap-4">
               <label class="flex items-center gap-1.5 cursor-pointer select-none">
                 <input type="checkbox" id="showBilayer" checked class="rounded border-slate-300 text-teal-600 focus:ring-teal-500">
-                顯示磷脂質
+                顯示脂質膜結構
               </label>
               <label class="flex items-center gap-1.5 cursor-pointer select-none">
                 <input type="checkbox" id="showGradient" checked class="rounded border-slate-300 text-teal-600 focus:ring-teal-500">
@@ -156,38 +156,38 @@
           <div class="bg-gradient-to-br from-indigo-900 to-slate-900 text-white rounded-2xl p-5 shadow-md border border-indigo-950/50 flex flex-col justify-between h-full">
             <div>
               <div class="flex items-center gap-2 text-indigo-400 text-xs font-bold uppercase tracking-wider mb-2">
-                <i class="fas fa-graduation-cap"></i> 核心觀念複習卡
+                <i class="fas fa-graduation-cap"></i> 觀念重點卡
               </div>
-              <h3 class="text-xl font-bold mb-3 text-cyan-200">物質如何進出細胞？</h3>
+              <h3 class="text-xl font-bold mb-3 text-cyan-200">物質進出細胞膜規則</h3>
               <ul class="space-y-4 text-xs md:text-sm text-slate-300 leading-relaxed">
                 <li class="flex items-start gap-2.5">
                   <span class="flex-shrink-0 w-5 h-5 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center font-bold text-xs mt-0.5">1</span>
                   <div>
-                    <strong class="text-white text-sm">大分子必須先分解：</strong>
-                    澱粉、蛋白質等大分子分子過大，**無法**通過細胞膜。須經消化分解成小分子（葡萄糖、胺基酸）才能進出細胞。
+                    <strong class="text-white text-sm">大分子不能過：</strong>
+                    澱粉、蛋白質太大了，**無法通過**細胞膜。必須先分解成小分子（葡萄糖、胺基酸）才能進出。
                   </div>
                 </li>
                 <li class="flex items-start gap-2.5">
                   <span class="flex-shrink-0 w-5 h-5 rounded-full bg-red-500/20 text-red-300 flex items-center justify-center font-bold text-xs mt-0.5">2</span>
                   <div>
-                    <strong class="text-white text-sm">簡單擴散作用 (不耗能)：</strong>
-                    氧氣、二氧化碳與水分子，可直接穿過磷脂質間隙。**順著濃度差（高濃度 $\rightarrow$ 低濃度）**自由進出。
+                    <strong class="text-white text-sm">直接穿透細胞膜：</strong>
+                    氧氣、二氧化碳和水分子非常小，可以直接穿透脂質細胞膜，由濃度高的地方往低的地方擴散（擴散作用）。
                   </div>
                 </li>
                 <li class="flex items-start gap-2.5">
                   <span class="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-300 flex items-center justify-center font-bold text-xs mt-0.5">3</span>
                   <div>
-                    <strong class="text-white text-sm">促進性擴散作用 (不耗能)：</strong>
-                    葡萄糖、胺基酸、礦物質以及水分子，必須藉由細胞膜上的**特殊蛋白質通道（專一性）**順著濃度差進出。
+                    <strong class="text-white text-sm">走蛋白質通道：</strong>
+                    葡萄糖、胺基酸、礦物質以及水分子，必須靠膜上的**特殊蛋白質通道**，順著濃度差（高 $\rightarrow$ 低）進出。
                   </div>
                 </li>
               </ul>
             </div>
             
             <div class="bg-indigo-950/50 rounded-xl p-3 border border-indigo-800/30 mt-4">
-              <span class="text-[11px] font-bold text-teal-400 block mb-1 uppercase tracking-wide">💡 會考超高頻迷思</span>
+              <span class="text-[11px] font-bold text-teal-400 block mb-1 uppercase tracking-wide">💡 考試最愛考</span>
               <p class="text-xs text-slate-400 leading-relaxed">
-                **水分子有兩種跨膜通道！** 它不僅能藉由簡單擴散（穿過磷脂層），亦可藉由水通道蛋白進行促進性擴散。
+                **水分子非常特殊！** 它既可以「直接穿透」細胞膜，也可以「走蛋白質通道（水通道）」快速進出喔！
               </p>
             </div>
           </div>
@@ -203,26 +203,26 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div class="p-4 rounded-xl bg-amber-50 border border-amber-100 text-xs md:text-sm">
             <h4 class="font-bold text-amber-800 flex items-center gap-1.5 mb-1">
-              <i class="fas fa-cookie-bite"></i> 任務一：丟進「澱粉分子」
+              <i class="fas fa-cookie-bite"></i> 任務一：觀察大分子
             </h4>
             <p class="text-slate-600 leading-relaxed">
-              在上方模擬器中加入大分子「澱粉」與「蛋白質」。觀察它們是否會卡在細胞膜外被彈開？為什麼？
+              點擊「澱粉」與「蛋白質」。看它們碰到細胞膜是不是會被彈開？（澱粉被彈開幾次後會自動分解成葡萄糖喔！）
             </p>
           </div>
           <div class="p-4 rounded-xl bg-teal-50 border border-teal-100 text-xs md:text-sm">
             <h4 class="font-bold text-teal-800 flex items-center gap-1.5 mb-1">
-              <i class="fas fa-droplet"></i> 任務二：觀察「水分子」雙通道
+              <i class="fas fa-droplet"></i> 任務二：找找水分子的雙重管道
             </h4>
             <p class="text-slate-600 leading-relaxed">
-              加入「水分子」。它除了能直接穿透磷脂質以外，是不是還能穿過特定的綠色水通道？兩種速度有何不同？
+              點擊「水分子」，你會發現有些會直接穿透膜，有些會走綠色的蛋白質通道（水通道），走通道的速度快非常多！
             </p>
           </div>
           <div class="p-4 rounded-xl bg-indigo-50 border border-indigo-100 text-xs md:text-sm">
             <h4 class="font-bold text-indigo-800 flex items-center gap-1.5 mb-1">
-              <i class="fas fa-key"></i> 任務三：驗證「通道專一性」
+              <i class="fas fa-key"></i> 任務三：蛋白質通道的專一性
             </h4>
             <p class="text-slate-600 leading-relaxed">
-              點選加入「葡萄糖」與「氧氣」。葡萄糖是否只能通過橘色的專屬載體蛋白？氧氣是否可以直接穿過膜？
+              點選「葡萄糖」，你會發現它**只能**走橘色的蛋白質通道，碰到其他顏色的通道或普通膜面會被彈開。
             </p>
           </div>
         </div>
@@ -233,8 +233,8 @@
     <div id="panel-sorting" class="tab-panel hidden space-y-6">
       <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
         <div class="max-w-3xl mx-auto text-center mb-8">
-          <h2 class="text-2xl font-black text-slate-800 tracking-tight">物質運輸分類大挑戰</h2>
-          <p class="text-slate-500 text-sm mt-1">請點選下方的物質，然後點選正確的細胞膜通道分類。把所有物質正確歸位吧！</p>
+          <h2 class="text-2xl font-black text-slate-800 tracking-tight">物質進出細胞膜分類大挑戰</h2>
+          <p class="text-slate-500 text-sm mt-1">請點選左側待分類的物質，然後點選右側正確的通道框。把所有物質正確歸位吧！</p>
           
           <!-- Progress bar -->
           <div class="w-full bg-slate-100 rounded-full h-2 mt-4 relative overflow-hidden">
@@ -271,7 +271,7 @@
                 </div>
                 <h4 class="font-bold text-slate-800 text-base">無法直接通過細胞膜</h4>
                 <p class="text-xs text-slate-500 mt-1 leading-relaxed">
-                  分子太大，必須在細胞外**先進行分解**成小分子後才能進出。
+                  分子太巨大了！必須在細胞外**先被消化分解**成小分子後才能進出。
                 </p>
               </div>
               <div id="cat-list-A" class="mt-4 space-y-2 min-h-[100px] bg-white/40 rounded-lg p-2 border border-slate-100">
@@ -286,9 +286,9 @@
                   <span class="text-xs font-extrabold text-indigo-700 bg-indigo-100 px-2 py-0.5 rounded uppercase tracking-wide">方式 B</span>
                   <span class="text-xs text-slate-400 group-hover:text-indigo-600 font-bold transition">點此歸類 <i class="fas fa-arrow-right"></i></span>
                 </div>
-                <h4 class="font-bold text-slate-800 text-base">簡單擴散作用</h4>
+                <h4 class="font-bold text-slate-800 text-base">直接穿透細胞膜</h4>
                 <p class="text-xs text-slate-500 mt-1 leading-relaxed">
-                  **直接穿過**細胞膜上的磷脂質間隙，由濃度高處往低處擴散。
+                  分子極小，可以**直接穿過**脂質膜構造，由高濃度往低濃度擴散。
                 </p>
               </div>
               <div id="cat-list-B" class="mt-4 space-y-2 min-h-[100px] bg-white/40 rounded-lg p-2 border border-slate-100">
@@ -303,9 +303,9 @@
                   <span class="text-xs font-extrabold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded uppercase tracking-wide">方式 C</span>
                   <span class="text-xs text-slate-400 group-hover:text-emerald-600 font-bold transition">點此歸類 <i class="fas fa-arrow-right"></i></span>
                 </div>
-                <h4 class="font-bold text-slate-800 text-base">促進性擴散作用</h4>
+                <h4 class="font-bold text-slate-800 text-base">走特殊蛋白質通道</h4>
                 <p class="text-xs text-slate-500 mt-1 leading-relaxed">
-                  需藉由細胞膜上的**特殊蛋白質通道（專一性）**順著濃度差通過。
+                  雖然是小分子，但需要膜上的**通道或載體蛋白質**協助才能通過。
                 </p>
               </div>
               <div id="cat-list-C" class="mt-4 space-y-2 min-h-[100px] bg-white/40 rounded-lg p-2 border border-slate-100">
@@ -318,7 +318,7 @@
 
         <div class="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p class="text-xs md:text-sm text-slate-500 italic">
-            * 貼心小提醒：有些特殊物質可能**同時符合多個通道方式**喔！請謹慎思考水分子。
+            * 貼心小提醒：**水分子很特別**，它可以直接穿透膜，也可以走水通道蛋白，你可以把它歸在多個分類中喔！
           </p>
           <div class="flex gap-2">
             <button onclick="resetSortingGame()" class="px-4 py-2 text-sm font-semibold border border-slate-200 hover:border-slate-300 rounded-xl transition text-slate-700">
@@ -341,19 +341,19 @@
           <div class="w-16 h-16 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center text-2xl mx-auto mb-4 shadow-inner">
             <i class="fas fa-graduation-cap"></i>
           </div>
-          <h2 class="text-2xl font-black text-slate-800">細胞膜運輸會考迷思終結者</h2>
+          <h2 class="text-2xl font-black text-slate-800">細胞膜運輸觀念簡單測驗</h2>
           <p class="text-slate-500 text-sm mt-2 max-w-md mx-auto leading-relaxed">
-            我們為你精選了 10 題九年級生物段考與會考最常出的「穿透與擴散」陷阱題。答完可立即獲得詳盡解析，終結所有觀念盲點！
+            精選 8 題最常考的細胞膜觀念基礎題，幫你快速掃描盲點，拿滿段考與會考分數！
           </p>
           <button onclick="startQuiz()" class="mt-6 px-8 py-3 bg-gradient-to-r from-teal-600 to-indigo-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition active:scale-95 text-base">
-            進入特訓挑戰
+            開始挑戰 (共 8 題)
           </button>
         </div>
 
         <!-- Quiz Play Panel (Hidden by default) -->
         <div id="quiz-play" class="hidden">
           <div class="flex justify-between items-center text-xs text-slate-400 mb-2">
-            <span id="quiz-progress-text">問題 1 / 10</span>
+            <span id="quiz-progress-text">問題 1 / 8</span>
             <span id="quiz-score-badge" class="bg-slate-100 px-2 py-0.5 rounded font-bold text-slate-600">目前得分: 0 分</span>
           </div>
           <!-- Progress bar -->
@@ -407,11 +407,11 @@
           <div>
             <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
               <span class="w-2.5 h-6 bg-indigo-500 rounded-full"></span>
-              特訓成果雷達圖
+              知識維度診斷
             </h3>
             
             <p class="text-slate-500 text-xs mb-6">
-              分析你在物質跨膜運輸中的四個核心知識維度：
+              分析你在細胞膜物質運輸中的四個核心概念掌握度：
             </p>
             
             <div class="space-y-4">
@@ -437,7 +437,7 @@
 
               <div>
                 <div class="flex justify-between text-xs font-bold mb-1">
-                  <span class="text-slate-600">3. 水分雙重通道特徵</span>
+                  <span class="text-slate-600">3. 水分進出雙重管道</span>
                   <span id="scoreDim3" class="text-sky-600">0%</span>
                 </div>
                 <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
@@ -447,7 +447,7 @@
 
               <div>
                 <div class="flex justify-between text-xs font-bold mb-1">
-                  <span class="text-slate-600">4. 通道專一性認知</span>
+                  <span class="text-slate-600">4. 通道專一性概念</span>
                   <span id="scoreDim4" class="text-amber-600">0%</span>
                 </div>
                 <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
@@ -458,7 +458,7 @@
           </div>
 
           <div class="mt-6 pt-4 border-t border-slate-100 text-xs text-slate-400">
-            * 完成「物質分類挑戰」與「迷思測驗」即可啟動最精確的指標雷達！
+            * 完成「物質分類挑戰」與「觀念簡單測驗」即可獲得百分之百的學習報告！
           </div>
         </div>
 
@@ -466,9 +466,9 @@
         <div class="lg:col-span-2 bg-white rounded-2xl p-6 shadow-sm border border-slate-100 space-y-6">
           <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
-              <h3 class="text-lg font-bold text-slate-800">解密特訓大師證書</h3>
+              <h3 class="text-lg font-bold text-slate-800">細胞膜解密大師證書</h3>
               <p class="text-xs text-slate-500 mt-1">
-                完成全部挑戰並正確率達 80% 以上，即可為自己客製並列印精美實體證書！
+                完成挑戰並正確率達 80% 以上，即可輸入姓名並列印你的專屬證書！
               </p>
             </div>
             
@@ -491,24 +491,24 @@
               <div class="text-amber-600 text-4xl mb-2">
                 <i class="fas fa-award"></i>
               </div>
-              <h4 class="text-2xl font-black text-amber-900 tracking-widest uppercase mb-1">榮譽特訓大師證書</h4>
+              <h4 class="text-2xl font-black text-amber-900 tracking-widest uppercase mb-1">榮譽特訓證書</h4>
               <p class="text-[10px] tracking-widest text-amber-700 font-bold uppercase mb-6">Master of Cellular Transport Decryption</p>
               
               <p class="text-sm text-slate-600">茲證明</p>
               <h5 id="certStudentName" class="text-2xl font-bold text-slate-800 border-b border-slate-300 inline-block px-8 py-1 my-3">九年級生物特訓生</h5>
               
               <p class="text-xs text-slate-600 max-w-sm mx-auto leading-relaxed mt-2">
-                於本活動中順利通過「動態細胞膜模擬器」探索、完成「物質跨膜通道大挑戰」及「會考迷思診斷 10 大核心測驗」，對於細胞膜結構、簡單擴散與促進性擴散具有深厚的學識和優異的理解。
+                於本活動中順利完成「細胞膜動態模擬」探索、成功通過「物質分類大挑戰」及「觀念診斷 8 大核心測驗」，對細胞膜結構、擴散作用與蛋白質通道已具備優異的理解與核心素養。
               </p>
 
               <!-- Stats Summary in Cert -->
               <div class="grid grid-cols-2 gap-4 max-w-xs mx-auto my-6 p-2 bg-amber-50/50 rounded-xl border border-amber-200/50">
                 <div>
-                  <span class="text-[10px] text-amber-700 block">分類正確率</span>
+                  <span class="text-[10px] text-amber-700 block">分類挑戰成績</span>
                   <span id="certSortingScore" class="font-bold text-slate-800 text-sm">-- %</span>
                 </div>
                 <div>
-                  <span class="text-[10px] text-amber-700 block">會考測驗成績</span>
+                  <span class="text-[10px] text-amber-700 block">觀念測驗得分</span>
                   <span id="certQuizScore" class="font-bold text-slate-800 text-sm">-- 分</span>
                 </div>
               </div>
@@ -539,7 +539,7 @@
     <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
       <div>
         <p class="font-bold text-slate-300">細胞膜物質運輸解密特訓營 &copy; 2026</p>
-        <p class="mt-1 text-[11px] text-slate-500">專為九年級生物會考、段考設計。結合新綱探究實作精神，終結常見迷思。</p>
+        <p class="mt-1 text-[11px] text-slate-500">專為九年級生物會考、段考複習設計。去除繁雜名詞，專注核心觀念。</p>
       </div>
       <div class="flex gap-4 text-slate-500 text-sm">
         <a href="#" onclick="switchTab('simulator')" class="hover:text-slate-300 transition">模擬器</a>
@@ -715,10 +715,10 @@
     let membraneThickness = 48;
     let animationId = null;
 
-    // Define channel ranges (x-coordinates mapped during resize)
+    // Define channel ranges
     let channels = {
-      glucose: { x: 0, width: 60, color: '#f97316', text: '橘色載體' },
-      mineral: { x: 0, width: 45, color: '#eab308', text: '黃色通道' },
+      glucose: { x: 0, width: 60, color: '#f97316', text: '橘色載體通道' },
+      mineral: { x: 0, width: 45, color: '#eab308', text: '黃色離子通道' },
       aquaporin: { x: 0, width: 45, color: '#22c55e', text: '綠色水通道' }
     };
 
@@ -741,7 +741,7 @@
         this.x = x || Math.random() * canvas.width;
         this.y = y || Math.random() * (membraneY - 40) + 15; // default to outer cell
         this.vx = (Math.random() - 0.5) * 1.5;
-        this.vy = (Math.random() - 0.5) * 1.5 + 0.3; // slight bias downward (representing concentration push)
+        this.vy = (Math.random() - 0.5) * 1.5 + 0.3; // slight bias downward
         this.state = 'outside'; // 'outside', 'crossing', 'inside'
         this.bounceCounter = 0;
         
@@ -751,31 +751,31 @@
             this.radius = 14;
             this.color = '#d97706';
             this.label = '澱粉';
-            this.desc = '超大分子聚合物，無法通過細胞膜上的任何管道，必須先被分解成葡萄糖！';
+            this.desc = '超大分子，絕對無法通過細胞膜，必須先在細胞外被分解成小分子「葡萄糖」！';
             break;
           case 'protein':
             this.radius = 12;
             this.color = '#38bdf8';
             this.label = '蛋白質';
-            this.desc = '巨大分子結構，無法直接通過細胞膜。在人體消化管中需先分解成胺基酸才可被吸收。';
+            this.desc = '超大分子，無法直接通過膜，在消化系統中必須先被分解成「胺基酸」才能吸收。';
             break;
           case 'glucose':
             this.radius = 7;
             this.color = '#f97316';
             this.label = '葡萄糖';
-            this.desc = '已被分解的小分子，但因具有親水性，只能藉由膜上「特殊蛋白質（載體）」以促進性擴散進入細胞。';
+            this.desc = '已被分解的小分子，但它不能直接穿透脂質細胞膜，一定要「走特殊蛋白質通道（橘色載體）」進出。';
             break;
           case 'water':
             this.radius = 4.5;
             this.color = '#2dd4bf';
             this.label = '水分子';
-            this.desc = '極度特殊的極小分子，能以「簡單擴散」慢速滲透磷脂質，也可以經由「水通道蛋白」快速進行促進性擴散。';
+            this.desc = '極小的物質，既可以「直接穿透膜」，也可以透過「水通道蛋白質（綠色）」超快速通過！';
             break;
           case 'gas':
             this.radius = 5.5;
             this.color = '#ef4444';
             this.label = '氧氣/二氧化碳';
-            this.desc = '超小、具備親脂性的氣體分子，可以直接穿透磷脂質雙分子層進出細胞（簡單擴散作用）。';
+            this.desc = '極微小的氣體分子，不需任何通道，可以直接穿透細胞膜（簡單的擴散作用）。';
             break;
         }
       }
@@ -803,14 +803,11 @@
         }
 
         // Membrane interaction physics
-        const distToMembrane = Math.abs(this.y - membraneY);
-        
         if (this.state === 'outside' && this.y + this.radius >= membraneY - membraneThickness/2) {
           this.handleMembraneCollision('down');
         } else if (this.state === 'inside' && this.y - this.radius <= membraneY + membraneThickness/2) {
           this.handleMembraneCollision('up');
         } else if (this.state === 'crossing') {
-          // Keep it sliding down/up through channel
           if (this.y > membraneY + membraneThickness/2 + 5) {
             this.state = 'inside';
           } else if (this.y < membraneY - membraneThickness/2 - 5) {
@@ -823,33 +820,29 @@
         const factor = (dir === 'down') ? 1 : -1;
 
         if (this.type === 'starch' || this.type === 'protein') {
-          // Large molecule: strictly blocked, bounce back with a dynamic recoil
+          // Large molecule: strictly blocked, bounce back
           this.vy *= -1.2; 
           this.y = membraneY - (membraneThickness/2 + this.radius + 1) * factor;
           this.bounceCounter++;
           if (this.bounceCounter > 3 && this.type === 'starch') {
-            // Secretly split a starch into multiple glucose to show decomposition visually!
             splitStarch(this);
           }
         } 
         else if (this.type === 'gas') {
-          // Gases pass right through without impediment (Simple diffusion)
-          // No collision response needed, let them transition
+          // Gases pass right through directly
           this.state = (dir === 'down') ? 'inside' : 'outside';
         } 
         else if (this.type === 'water') {
-          // Water can pass via simple diffusion (slower, random bounce sometimes)
-          // OR extremely fast through aquaporin
           const inAquaporin = (this.x >= channels.aquaporin.x - channels.aquaporin.width/2 && 
                                this.x <= channels.aquaporin.x + channels.aquaporin.width/2);
           
           if (inAquaporin) {
-            // Speed up through aquaporin (channel protein)
+            // Speed up through aquaporin
             this.state = 'crossing';
-            this.vx = 0; // lock horizontal
+            this.vx = 0; 
             this.vy = 2.5 * factor;
           } else {
-            // Simple diffusion: has 60% chance to pass slowly, 40% chance to bounce
+            // Simple diffusion: has 60% chance to pass directly, 40% chance to bounce
             if (Math.random() < 0.6) {
               this.state = (dir === 'down') ? 'inside' : 'outside';
             } else {
@@ -878,7 +871,6 @@
       draw() {
         ctx.beginPath();
         if (this.type === 'starch') {
-          // Render as a chain of 4 connected circles
           for (let i = 0; i < 4; i++) {
             ctx.arc(this.x + (i - 1.5) * 8, this.y + Math.sin(i + Date.now() * 0.01) * 3, this.radius/2, 0, Math.PI * 2);
           }
@@ -886,7 +878,6 @@
           ctx.fill();
         } 
         else if (this.type === 'protein') {
-          // Complex chain structure
           ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
           ctx.arc(this.x - 6, this.y - 6, this.radius * 0.7, 0, Math.PI * 2);
           ctx.arc(this.x + 6, this.y + 4, this.radius * 0.7, 0, Math.PI * 2);
@@ -894,7 +885,6 @@
           ctx.fill();
         } 
         else if (this.type === 'glucose') {
-          // Hexagonal shape
           ctx.save();
           ctx.translate(this.x, this.y);
           ctx.beginPath();
@@ -907,7 +897,6 @@
           ctx.restore();
         } 
         else {
-          // Regular circles for simple fluids & gases
           ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
           ctx.fillStyle = this.color;
           ctx.fill();
@@ -922,13 +911,12 @@
       
       const count = type === 'water' ? 8 : (type === 'gas' ? 8 : 3);
       for (let i = 0; i < count; i++) {
-        // distribute horizontally
         const rx = Math.random() * (canvas.width - 40) + 20;
         const ry = Math.random() * (membraneY - 60) + 20;
         particles.push(new Particle(type, rx, ry));
       }
       
-      showToast('分子生成', `已投入 ${count} 個${getMoleculeName(type)}分子到細胞外！`, 'info');
+      showToast('小精靈提示', `已生成 ${count} 個${getMoleculeName(type)}到細胞外面！`, 'info');
     }
 
     function getMoleculeName(type) {
@@ -942,17 +930,16 @@
     }
 
     function splitStarch(starchObj) {
-      // Split a bouncing starch polymer chain into 3 tiny free-floating glucoses
       const index = particles.indexOf(starchObj);
       if (index > -1) {
         particles.splice(index, 1);
         for (let i = 0; i < 3; i++) {
           const glucose = new Particle('glucose', starchObj.x + (i - 1) * 12, starchObj.y);
-          glucose.vy = Math.abs(glucose.vy); // push downward
+          glucose.vy = Math.abs(glucose.vy); 
           particles.push(glucose);
         }
         playSynthSound([600, 900], [0.1, 0.1], 'sine');
-        showToast('酵素分解作用！', '大分子「澱粉」已被酵素完全分解成小分子「葡萄糖」！現在可以順利通過膜上橘色載體蛋白了。', 'success');
+        showToast('食物消化分解！', '大分子「澱粉」被分解成小分子「葡萄糖」了！現在可以順利穿過橘色的載體通道。', 'success');
       }
     }
 
@@ -961,18 +948,16 @@
       playSynthSound([150], [0.15], 'sawtooth');
     }
 
-    // Membrane and Channel rendering logic
     function drawMembraneStructure() {
       const showBilayer = document.getElementById('showBilayer').checked;
       const showGradient = document.getElementById('showGradient').checked;
 
-      // 1. Draw Concentration Gradient background
       if (showGradient) {
         let grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
-        grad.addColorStop(0, 'rgba(15, 23, 42, 0.95)'); // dark outer
+        grad.addColorStop(0, 'rgba(15, 23, 42, 0.95)'); 
         grad.addColorStop(0.35, 'rgba(15, 23, 42, 0.85)');
-        grad.addColorStop(0.5, 'rgba(23, 37, 84, 0.6)'); // membrane area
-        grad.addColorStop(0.65, 'rgba(15, 23, 42, 0.5)'); // lighter inside
+        grad.addColorStop(0.5, 'rgba(23, 37, 84, 0.6)'); 
+        grad.addColorStop(0.65, 'rgba(15, 23, 42, 0.5)'); 
         grad.addColorStop(1, 'rgba(15, 23, 42, 0.35)');
         ctx.fillStyle = grad;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -981,14 +966,12 @@
         ctx.fillRect(0, 0, canvas.width, canvas.height);
       }
 
-      // 2. Draw Phospholipid bilayer (simple dynamic rendering)
       if (showBilayer) {
         ctx.lineWidth = 1;
         const lipidRadius = 6;
         const lipidGap = 13;
         
         for (let rx = lipidRadius; rx < canvas.width; rx += lipidGap) {
-          // Skip drawing lipids if we are within any channel boundary
           let isInsideChannel = false;
           Object.values(channels).forEach(channel => {
             if (rx >= channel.x - channel.width/2 - 5 && rx <= channel.x + channel.width/2 + 5) {
@@ -997,14 +980,14 @@
           });
 
           if (!isInsideChannel) {
-            // Upper lipid layer
+            // Upper head
             ctx.beginPath();
             ctx.arc(rx, membraneY - 14, lipidRadius, 0, Math.PI * 2);
-            ctx.fillStyle = '#818cf8'; // polar hydrophilic head
+            ctx.fillStyle = '#818cf8'; 
             ctx.fill();
             ctx.closePath();
 
-            // Upper tail (yellow lines)
+            // Upper tail
             ctx.beginPath();
             ctx.moveTo(rx - 2, membraneY - 8);
             ctx.lineTo(rx - 2, membraneY - 2);
@@ -1014,7 +997,7 @@
             ctx.stroke();
             ctx.closePath();
 
-            // Lower lipid layer
+            // Lower head
             ctx.beginPath();
             ctx.arc(rx, membraneY + 14, lipidRadius, 0, Math.PI * 2);
             ctx.fillStyle = '#818cf8'; 
@@ -1033,7 +1016,6 @@
           }
         }
       } else {
-        // Draw solid placeholder line for membrane bounds
         ctx.beginPath();
         ctx.rect(0, membraneY - membraneThickness/2, canvas.width, membraneThickness);
         ctx.fillStyle = 'rgba(255,255,255,0.03)';
@@ -1041,24 +1023,16 @@
         ctx.closePath();
       }
 
-      // 3. Draw Channel Proteins
-      // Glucose Carrier (Orange)
-      drawChannelProtein(channels.glucose.x, membraneY, channels.glucose.width, '#f97316', '葡萄糖載體');
-      
-      // Mineral Channel (Yellow)
-      drawChannelProtein(channels.mineral.x, membraneY, channels.mineral.width, '#eab308', '礦物質通道');
-
-      // Aquaporin Channel (Green)
-      drawChannelProtein(channels.aquaporin.x, membraneY, channels.aquaporin.width, '#22c55e', '水通道蛋白');
+      drawChannelProtein(channels.glucose.x, membraneY, channels.glucose.width, '#f97316', '橘色載體蛋白');
+      drawChannelProtein(channels.mineral.x, membraneY, channels.mineral.width, '#eab308', '黃色離子通道');
+      drawChannelProtein(channels.aquaporin.x, membraneY, channels.aquaporin.width, '#22c55e', '綠色水通道');
     }
 
     function drawChannelProtein(cx, cy, width, color, labelText) {
-      // Draw outer structural protein bounds
       ctx.save();
       ctx.lineWidth = 4;
       ctx.strokeStyle = color;
 
-      // Left lobe
       ctx.beginPath();
       ctx.arc(cx - width/3, cy, 20, Math.PI * 1.5, Math.PI * 0.5, true);
       ctx.fillStyle = '#1e293b';
@@ -1066,7 +1040,6 @@
       ctx.stroke();
       ctx.closePath();
 
-      // Right lobe
       ctx.beginPath();
       ctx.arc(cx + width/3, cy, 20, Math.PI * 1.5, Math.PI * 0.5, false);
       ctx.fillStyle = '#1e293b';
@@ -1074,23 +1047,20 @@
       ctx.stroke();
       ctx.closePath();
 
-      // Internal text label on top of protein
       ctx.fillStyle = '#94a3b8';
-      ctx.font = '9px sans-serif';
+      ctx.font = '10px sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText(labelText, cx, cy - 26);
 
       ctx.restore();
     }
 
-    // Canvas interactivity: mouse move triggers customized explanation tooltip
     canvas.addEventListener('mousemove', (e) => {
       const rect = canvas.getBoundingClientRect();
       const mx = e.clientX - rect.left;
       const my = e.clientY - rect.top;
 
       let hoveredParticle = null;
-      // Search for any hovering particle
       for (let p of particles) {
         let d = Math.hypot(p.x - mx, p.y - my);
         if (d <= p.radius + 5) {
@@ -1107,7 +1077,6 @@
         canvasTooltip.style.top = `${hoveredParticle.y + 10}px`;
         canvasTooltip.classList.remove('hidden');
       } else {
-        // Check for hovering channels
         let hoveredChannel = null;
         Object.values(channels).forEach(channel => {
           if (mx >= channel.x - channel.width/2 && mx <= channel.x + channel.width/2 &&
@@ -1119,12 +1088,12 @@
         if (hoveredChannel) {
           tooltipTitle.textContent = hoveredChannel.text;
           tooltipTitle.style.color = hoveredChannel.color;
-          if (hoveredChannel.text === '橘色載體') {
-            tooltipDesc.textContent = '專供「葡萄糖」或「胺基酸」等特定的極性小分子經由促進性擴散通過。具專一性。';
-          } else if (hoveredChannel.text === '黃色通道') {
-            tooltipDesc.textContent = '專供特定離子、礦物質通過的膜蛋白通道。只允許匹配大小與電荷的礦物質通行。';
-          } else if (hoveredChannel.text === '水通道蛋白') {
-            tooltipDesc.textContent = '專屬於「水分子」的高速公路。水能以十億倍於普通簡單擴散的速度，極其快速地跨膜通行！';
+          if (hoveredChannel.text === '橘色載體通道') {
+            tooltipDesc.textContent = '專門運送「葡萄糖」或「胺基酸」等特定小分子的蛋白質通道。具有專一性！';
+          } else if (hoveredChannel.text === '黃色離子通道') {
+            tooltipDesc.textContent = '專門運送「礦物質（如鈉、鉀、鈣離子）」的蛋白質通道。非專屬分子不能過。';
+          } else if (hoveredChannel.text === '綠色水通道') {
+            tooltipDesc.textContent = '專為「水分子」設計的蛋白質高速公路。讓水可以快速、大量進出。';
           }
           canvasTooltip.style.left = `${mx + 10}px`;
           canvasTooltip.style.top = `${my + 10}px`;
@@ -1135,14 +1104,12 @@
       }
     });
 
-    // Tap to spawn particles at specific location
     canvas.addEventListener('mousedown', (e) => {
       const rect = canvas.getBoundingClientRect();
       const mx = e.clientX - rect.left;
       const my = e.clientY - rect.top;
 
       if (my < membraneY - 30) {
-        // Spawn a random small molecule
         const types = ['glucose', 'water', 'gas'];
         const randomType = types[Math.floor(Math.random() * types.length)];
         particles.push(new Particle(randomType, mx, my));
@@ -1150,22 +1117,16 @@
       }
     });
 
-    // Animation Loop
     function animateSimulator() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
       drawMembraneStructure();
-
-      // Update & draw all active molecules
       particles.forEach(p => {
         p.update();
         p.draw();
       });
-
       animationId = requestAnimationFrame(animateSimulator);
     }
 
-    // Boot
     window.addEventListener('load', () => {
       resizeCanvas();
       animateSimulator();
@@ -1176,30 +1137,24 @@
 
   <!-- ================= SUBSTANCE SORTING GAME SCRIPT ================= -->
   <script>
-    // Pool of substances to classify
     const sortingSubstancesPool = [
       { id: 'starch', name: '澱粉 (大分子)', icon: 'fa-cookie', class: 'amber', answers: ['A'] },
       { id: 'protein', name: '蛋白質 (大分子)', icon: 'fa-egg', class: 'sky', answers: ['A'] },
       { id: 'glucose', name: '葡萄糖 (小分子)', icon: 'fa-cube', class: 'orange', answers: ['C'] },
       { id: 'amino_acid', name: '胺基酸 (小分子)', icon: 'fa-capsules', class: 'indigo', answers: ['C'] },
-      { id: 'mineral', name: '礦物質 (無機鹽)', icon: 'fa-gem', class: 'yellow', answers: ['C'] },
+      { id: 'mineral', name: '礦物質 (離子)', icon: 'fa-gem', class: 'yellow', answers: ['C'] },
       { id: 'oxygen', name: '氧氣 (氣體)', icon: 'fa-wind', class: 'red', answers: ['B'] },
       { id: 'co2', name: '二氧化碳 (氣體)', icon: 'fa-cloud-meatball', class: 'rose', answers: ['B'] },
-      { id: 'water', name: '水分子 (特別物)', icon: 'fa-droplet', class: 'teal', answers: ['B', 'C'] } // BOTH simple & facilitated!
+      { id: 'water', name: '水分子 (皆可過)', icon: 'fa-droplet', class: 'teal', answers: ['B', 'C'] } // Both direct & channel
     ];
 
     let currentSelectedId = null;
-    let studentSortingPlacements = {
-      A: [], // Cannot pass directly
-      B: [], // Simple Diffusion
-      C: []  // Facilitated Diffusion
-    };
+    let studentSortingPlacements = { A: [], B: [], C: [] };
 
     function initSortingGame() {
       const container = document.getElementById('sortingItemsContainer');
       container.innerHTML = '';
       
-      // Filter out substances that are already assigned
       const placedIds = [...studentSortingPlacements.A, ...studentSortingPlacements.B, ...studentSortingPlacements.C].map(item => item.id);
       
       sortingSubstancesPool.forEach(sub => {
@@ -1221,7 +1176,6 @@
         }
       });
 
-      // Clear selecting state
       currentSelectedId = null;
       updateSortingStatus();
     }
@@ -1242,25 +1196,24 @@
 
     function selectSortingItem(id) {
       playClickSound();
-      // Remove outline on former selection
       if (currentSelectedId) {
         const prev = document.getElementById(`sub-card-${currentSelectedId}`);
-        if (prev) prev.classList.replace('border-teal-500', 'border-slate-200');
+        if (prev) prev.className = prev.className.replace('border-teal-500', 'border-slate-200');
       }
 
       currentSelectedId = id;
       const card = document.getElementById(`sub-card-${id}`);
       if (card) {
-        card.classList.replace('border-slate-200', 'border-teal-500');
+        card.className = card.className.replace('border-slate-200', 'border-teal-500');
         card.classList.add('ring-2', 'ring-teal-200');
       }
 
-      showToast('選取物質', '請再點選右側的黃、藍、綠三個分類框之一，進行歸位！', 'info');
+      showToast('已選取物質', '請再點選右側三個分類框之一，進行歸位！', 'info');
     }
 
     function assignToCategory(catId) {
       if (!currentSelectedId) {
-        showToast('請先選取物質', '請先點選左側待分類的物質卡片！', 'error');
+        showToast('請先點選左側物質', '要先在待分類區選好卡片，才能放進去喔！', 'error');
         playWrongSound();
         return;
       }
@@ -1268,21 +1221,14 @@
       const item = sortingSubstancesPool.find(sub => sub.id === currentSelectedId);
       if (!item) return;
 
-      // Ensure no duplicate placement in the same category
       if (studentSortingPlacements[catId].some(placed => placed.id === item.id)) {
-        showToast('重複歸類', `「${item.name}」已經在該分類中了。`, 'info');
+        showToast('已經放過囉', `「${item.name}」已經在該分類中了。`, 'info');
         return;
       }
 
       playClickSound();
-
-      // Add to category
       studentSortingPlacements[catId].push(item);
-      
-      // Redraw list in category
       renderCategoryList(catId);
-      
-      // Re-render items pool
       initSortingGame();
     }
 
@@ -1335,10 +1281,9 @@
       renderCategoryList('C');
       initSortingGame();
       document.getElementById('sortingScore').textContent = `正確率: 0%`;
-      showToast('遊戲已重設', '可以重新進行物質分類囉！', 'info');
+      showToast('挑戰重置', '你可以重新進行物質分類囉！', 'info');
     }
 
-    // Global performance tracker
     let lastSortingScorePct = 0;
 
     function verifySortingGame() {
@@ -1346,7 +1291,6 @@
       let totalAssigned = 0;
       let mistakes = [];
 
-      // Calculate total correctly assigned and look for errors
       ['A', 'B', 'C'].forEach(cat => {
         studentSortingPlacements[cat].forEach(item => {
           totalAssigned++;
@@ -1358,40 +1302,37 @@
         });
       });
 
-      // Special check: Did water get classified in both or at least one?
       const waterPlaced = [...studentSortingPlacements.A, ...studentSortingPlacements.B, ...studentSortingPlacements.C].filter(i => i.id === 'water');
       let waterSpecialBonus = false;
       if (waterPlaced.length > 1) {
-        waterSpecialBonus = true; // Outstanding! Found the double channel
+        waterSpecialBonus = true; 
       }
 
-      // 8 substances, since water has double channels, let's treat the score as correctly matched answers out of total assigned
       const totalElementsExpected = 8;
       
       if (totalAssigned === 0) {
-        showToast('尚未歸類任何物質', '請先把物質放入分類框中再送出答案！', 'error');
+        showToast('空空的喔！', '請先把左邊的物質放入分類框中再檢查！', 'error');
         playWrongSound();
         return;
       }
 
       let scorePercentage = Math.round((totalCorrect / Math.max(totalElementsExpected, totalAssigned)) * 100);
       if (waterSpecialBonus && scorePercentage < 100) {
-        scorePercentage = Math.min(100, scorePercentage + 10); // reward for identifying dual nature
+        scorePercentage = Math.min(100, scorePercentage + 10); 
       }
       
       lastSortingScorePct = scorePercentage;
-
       document.getElementById('sortingScore').textContent = `正確率: ${scorePercentage}%`;
 
       if (scorePercentage === 100) {
         playCorrectSound();
-        showToast('超完美！完美通關！', '恭喜你！完全釐清大分子分解、簡單擴散與促進性擴散的所有物質管道，並發現了水分子雙重通道的秘密！', 'success');
-      } else if (scorePercentage >= 70) {
+        showToast('太完美了！完全答對！', '你真棒！完全分清楚大分子分解、直接穿透與走特殊蛋白質通道的觀念了！', 'success');
+      } else if (scorePercentage >= 75) {
         playCorrectSound();
-        showToast('很不錯喔！', `分類正確率達 ${scorePercentage}%。有些微小迷思（如：${mistakes.join('、')}）可點按重新調整喔！`, 'success');
+        showToast('非常好！接近完美！', `正確率達 ${scorePercentage}%。有些微小迷思（如：${mistakes.join('、')}）可以再調整看看喔！`, 'success');
       } else {
         playWrongSound();
-        showToast('繼續加油！', `正確率為 ${scorePercentage}%。澱粉是多醣需要分解，氣體是簡單擴散，再試一下釐清概念吧！`, 'error');
+        showToast('再接再厲！', `正確率為 ${scorePercentage}%。想想看，澱粉是巨大分子需要分解，氣體是直接穿透。再試一次吧！`, 'error');
       }
     }
   </script>
@@ -1400,131 +1341,107 @@
   <script>
     const quizQuestions = [
       {
-        question: "關於「擴散作用」的物理本質，下列敘述何者正確？",
+        question: "1. 關於「擴散作用」這項自然現象，下列敘述何者正確？",
         options: [
-          "這是一種主動運輸，必須消耗細胞的能量 (ATP) 來運送物質",
-          "這是一種自然的物理物理現象，物質會由濃度高往濃度低移動，不消耗能量",
-          "只有液體分子（例如水）才會發生，氣體分子完全不會發生擴散作用",
-          "一定要在有細胞膜特殊蛋白質協助的細胞內，才能進行擴散作用"
+          "擴散作用必須靠細胞消耗能量（ATP）來主動運送物質",
+          "擴散作用不需消耗細胞能量，物質會自發由濃度高往濃度低移動",
+          "只有固體物質才會擴散，氣體分子完全不會發生擴散作用",
+          "必須在有光的環境下，細胞內才能進行擴散作用"
         ],
         correct: 1,
-        dim: 2, // Dimension 2: 擴散不耗能
-        explanation: "擴散作用是物理學中的自然現象，源自粒子雜亂無章的碰撞與熱運動。**物質會自發地由濃度高（分子多）往濃度低（分子少）方向移動，直到均勻為止，不需消耗細胞任何能量（ATP）**。簡單擴散與促進性擴散都屬於此物理特性！"
+        dim: 2, 
+        explanation: "擴散作用是物理學中的自然現象。**分子會自發由濃度高（多）往濃度低（少）的方向移動，直到均勻為止，不需消耗細胞任何能量**。直接穿透或走蛋白質通道都屬於這種不需要耗能的移動方式！"
       },
       {
-        question: "日常食用的排骨（蛋白質）和米飯（澱粉），為什麼人體細胞無法直接吸收它們跨越膜結構？",
+        question: "2. 食物中的「澱粉」和肉類中的「蛋白質」屬於大分子，為什麼不能直接通過細胞膜？",
         options: [
-          "因為它們不帶電荷，所以被細胞膜阻擋在外",
-          "因為它們分子體積過大，無法直接穿過細胞膜脂質或蛋白通道，必須在消化管中先分解為小分子",
-          "因為它們具備親脂性質，會溶解並卡在細胞膜中間動彈不得",
-          "因為細胞膜表面上，缺乏可以識別蛋白質與澱粉的辨識密碼"
+          "因為它們是小分子，不需要穿透細胞膜就可以被直接吸收",
+          "因為它們分子太大，直接被細胞膜阻擋在外。必須先消化分解成小分子才能進出細胞",
+          "因為它們具有毒性，所以細胞膜會主動把它們排除在外",
+          "因為它們是油溶性的，會溶解在脂質雙分子層裡面出不來"
         ],
         correct: 1,
-        dim: 1, // Dimension 1: 大分子分解
-        explanation: "澱粉（多醣）與蛋白質都是巨大分子（聚合物），因為**分子體積過大**，絕不能直接穿過細胞膜。人體必須經由消化系統（澱粉 $\rightarrow$ 葡萄糖、蛋白質 $\rightarrow$ 胺基酸）將它們分解成「小分子」後，才能跨膜被細胞吸收！"
+        dim: 1, 
+        explanation: "米飯裡的**澱粉**與肉類的**蛋白質**都是「巨大分子」，因為**體積太大**，完全無法通過膜。人體必須經由消化系統（澱粉 $\rightarrow$ 葡萄糖；蛋白質 $\rightarrow$ 胺基酸）分解為小分子，才能順利跨過膜被細胞吸收。"
       },
       {
-        question: "九年級段考最常見的陷阱題：關於「促進性擴散」，下列何者為常見的**錯誤**觀念？",
+        question: "3. 當我們深吸一口氣時，肺泡與血管之間進行「氧氣」和「二氧化碳」的交換，它是透過什麼方式進出細胞膜？",
         options: [
-          "需要細胞膜上的特殊蛋白質（通道或載體）予以協助",
-          "物質的移動方向是由濃度高處往濃度低處進行（順著濃度差）",
-          "這種方式必須消耗細胞內儲存的能量 (ATP) 才能開啟蛋白閘門",
-          "葡萄糖、胺基酸、礦物質皆是採取此種方式跨越細胞膜"
-        ],
-        correct: 2,
-        dim: 2, // Dimension 2: 擴散不耗能
-        explanation: "**既然名為「擴散」，就絕對「不消耗能量」！** 促進性擴散與簡單擴散的共通點即在於：不耗能、順著濃度差（高 $\rightarrow$ 低）。唯一的差別在於促進性擴散需要「特殊蛋白質」在膜上架設快速通道。"
-      },
-      {
-        question: "關於水分子（$H_2O$）進出細胞膜的管道，下列敘述何者最為精確？",
-        options: [
-          "由於水分子帶電，所以只能走細胞膜上的特殊水通道蛋白，不能穿過磷脂質",
-          "水分子極小，既可經簡單擴散穿過磷脂質間隙，亦可經促進性擴散由水通道蛋白快速通行",
-          "水分子太大，無法直接進出，必須先在膜外被水解酶分解成氫氣與氧氣",
-          "水分子只能透過主動運輸進出細胞，細胞必須為此消耗大量的熱能與能量"
-        ],
-        correct: 1,
-        dim: 3, // Dimension 3: 水分雙重通道
-        explanation: "水分子是生物體最特別的存在。它分子尺寸非常微小，**可以直接硬擠過膜上的磷脂質間隙（簡單擴散）**。不過，細胞膜上也設有特化的**「水通道蛋白（Aquaporins）」**，可容水分子高速大量通過（促進性擴散）。所以兩種途徑皆行得通，這在會考中是極易落入陷阱的特例！"
-      },
-      {
-        question: "細胞膜上的特殊運輸蛋白質具有「專一性」，這句話在生物學上的意義為何？",
-        options: [
-          "一種通道蛋白質只能出現在特定組織（如心臟）的細胞膜上，其他細胞沒有",
-          "這些蛋白質必須在特定的環境溫度下（如 37度）才能具有啟動運送物質的活性",
-          "每一種特殊運輸蛋白就像是特定的一把鎖，只能允許「特定的物質」匹配通過",
-          "這種蛋白質只專注於運送大分子物質，如澱粉或多肽鏈"
-        ],
-        correct: 2,
-        dim: 4, // Dimension 4: 專一性
-        explanation: "通道蛋白或載體蛋白的**「專一性（Specificity）」**指的是它跟要被運送的物質間存在特定的結構鎖鑰吻合關係。例如：葡萄糖載體蛋白只會和葡萄糖結合進行運送，它絕對無法用來運送胺基酸、離子或澱粉。"
-      },
-      {
-        question: "去夜市喝了木瓜牛奶，其中的牛奶成分已被消化分解為「胺基酸」。這些小分子在小腸絨毛細胞吸收時，是採取什麼方式？",
-        options: [
-          "直接由高濃度穿透細胞膜上的磷脂質間隙（簡單擴散作用）",
-          "透過特殊膜蛋白質載體進行「促進性擴散作用」",
-          "必須耗能將其轉化為小分子水蒸氣，再自然擴散進入",
-          "因小腸绒毛細胞有伸縮孔隙，是透過吞噬大孔隙直接吸入"
-        ],
-        correct: 1,
-        dim: 1, // Dimension 1: 大分子分解
-        explanation: "雖然胺基酸已經是「小分子」了，但它和葡萄糖一樣，因為帶有極性且具親水性，**無法穿過斥水性的磷脂質雙分子層內部**。因此，必須經由細胞膜上特屬的「胺基酸運輸蛋白」通道，以**促進性擴散**跨膜進入細胞。"
-      },
-      {
-        question: "當我們深吸一口氣，肺泡細胞與微血管內進行的氧氣（$O_2$）和二氧化碳（$CO_2$）氣體交換，是經由什麼方式？",
-        options: [
-          "简单擴散作用，直接穿透磷脂質進出",
-          "促進性擴散作用，必須透過膜上的氧氣專屬通道蛋白",
-          "主動運輸，微血管細胞必須強力壓縮並耗能才能把氧氣塞進微血管",
-          "滲透作用，伴隨著水流強迫氣體溶解並推進細胞中"
+          "氣體分子直接穿透脂質細胞膜進行擴散",
+          "氣體分子必須透過特定的蛋白質通道才能進入",
+          "細胞必須用吸塵器一樣消耗大量能量來強行吸入氣體",
+          "氣體分子是溶解在大量的水中，伴隨水分一同流進來的"
         ],
         correct: 0,
-        dim: 2, // Dimension 2: 擴散不耗能
-        explanation: "氧氣、二氧化碳等氣體分子尺寸非常小，且具有較高的親脂性（非極性），可以直接輕鬆穿過細胞膜的磷脂質雙分子層。所以**氣體交換完全不需要膜上蛋白質的協助**，純粹是**簡單擴散作用**！"
+        dim: 2, 
+        explanation: "氧氣、二氧化碳等氣體分子**尺寸非常小**，而且可以和脂質相容，所以**不需任何蛋白質通道協助**，就能**直接穿透**細胞膜進出。這也是最簡單的擴散形式。"
       },
       {
-        question: "紅血球細胞被置入高濃度的食鹽水中，在顯微鏡下觀察其外觀會發生萎縮。關於此現象（滲透作用）中水分子移動的敘述，何者正確？",
+        question: "4. 牛奶被分解後的「胺基酸」與米飯被分解後的「葡萄糖」都是小分子，牠們要怎麼進出細胞？",
         options: [
-          "細胞外的水分濃度低，因此水分會經由擴散作用從細胞內流向細胞外，導致細胞萎縮",
-          "鹽巴分子大量擠進紅血球細胞內部，把水分擠出，造成紅血球脫水",
-          "細胞膜的蛋白質通道偵測到高鹽分而主動將細胞內所有水分鎖死並萎縮",
-          "食鹽水中的氯離子會破壞磷脂質，導致水分子直接漏出並使細胞破損"
-        ],
-        correct: 0,
-        dim: 3, // Dimension 3: 水分雙重通道
-        explanation: "當細胞置於高鹽水（外液濃度高、水分子比例少），細胞內的水濃度相對高於細胞外。此時水分子會順著濃度差，自發性**擴散出細胞（外流多於內流）**，此作用稱滲透。因失去水分，紅血球便會呈現縐縮狀態。"
-      },
-      {
-        question: "小櫻上完生物課後，整理了一張筆記。請問她筆記中的哪一項陳述觀念**最不正確**？",
-        options: [
-          "澱粉在口中經唾液澱粉酶作用，也是為了將大分子切成可穿透膜的小分子",
-          "只要是水溶性且體積小的無機鹽（如鈉離子），都可以隨意經簡單擴散穿過膜",
-          "當水分子利用水通道蛋白進出細胞時，也完全不需要消耗細胞的能量",
-          "礦物質的進出具備專一性，因為每種礦物質離子有特定的通道結構"
+          "因為是小分子，可以直接硬擠、穿透細胞膜",
+          "必須走膜上特定的「特殊蛋白質通道」才能進出",
+          "必須耗能將其轉化為小分子氣體，再自然吸入",
+          "小分子完全不需要進入細胞，會在血管中直接發揮作用"
         ],
         correct: 1,
-        dim: 4, // Dimension 4: 專一性
-        explanation: "無機鹽（礦物質離子如 $Na^+$, $K^+$, $Cl^-$）雖然分子量非常小，但因帶有顯著的電荷，會被膜內極性斥水的磷脂質尾部強烈排斥，所以**絕對無法以「簡單擴散」穿透脂質**。離子必走特定專屬的通道（即促進性擴散）。"
+        dim: 1, 
+        explanation: "葡萄糖、胺基酸雖然已經被分解為「小分子」了，但它們無法跟脂質起化學相容（親水性），所以無法直接穿過膜，必須走膜上的**「特殊蛋白質通道」**。這依然是不耗能的擴散現象！"
       },
       {
-        question: "對於細胞膜結構（如您上傳的圖片所示），下列哪一項對特殊蛋白質通道的敘述最正確？",
+        question: "5. 關於日常重要的「水分子」進出細胞膜的管道，下列哪一個說法最棒、最精確？",
         options: [
-          "通道蛋白是整片細胞膜的主體，水分子完全不可能穿過磷脂質，只走通道蛋白",
-          "只要細胞有需要，通道蛋白隨時可以調整孔徑大小，讓澱粉大分子擠過去",
-          "水通道蛋白就像加速器，可以讓水分子極為快速地進出，維持細胞的水分恆定",
-          "所有通道蛋白都不需要挑選分子，就像過濾網，分子比網目小就能過"
+          "水分子只能走綠色的特殊水通道蛋白，不能直接穿透膜",
+          "水分子太大無法進出細胞，細胞只能靠口乾舌燥來補充水分",
+          "水分子非常小，既可以直接穿透細胞膜，也可以走蛋白質通道快速進出",
+          "水分子必須由細胞主動消耗大量熱量，才能透過幫浦打進細胞"
         ],
         correct: 2,
-        dim: 3, // Dimension 3: 水分雙重通道
-        explanation: "水分子雖能簡單擴散，但速度緩慢。**水通道蛋白 (Aquaporins)** 的存在能讓水分子極為迅速、大量、精準地進出。這對於紅血球、腎小管細胞等需要瞬時水分平衡調控的細胞來說至關重要！"
+        dim: 3, 
+        explanation: "水分子是生物體內最獨特的存在！它分子極小，**既可以「直接穿透細胞膜」**（速度慢一點），細胞膜上也有設置特別高規格的**「水通道蛋白通道」**（速度極快）。兩種方式都行得通，完全不耗能！"
+      },
+      {
+        question: "6. 老師說特殊蛋白質通道具有「專一性」，這是什麼意思呢？",
+        options: [
+          "一種蛋白質通道在全身的細胞膜上都長得一模一樣，沒有任何差別",
+          "蛋白質通道就像特定的鎖，只有匹配的「特定分子」才能從它那裡通過",
+          "蛋白質通道只在 37度C 的特定體溫下才會偶爾開啟",
+          "這種通道只在晚上睡覺時才會開啟，白天完全關閉"
+        ],
+        correct: 1,
+        dim: 4, 
+        explanation: "**專一性（Specificity）**指的是鎖鑰關係。例如膜上專門運送「葡萄糖」的蛋白質通道，就只會讓葡萄糖通過，其他像胺基酸、礦物質離子等，通通被會擋下，不能共用同一個通道。"
+      },
+      {
+        question: "7. 礦物質（例如食鹽中的鈉離子、離子等）非常小，牠們可以直接穿透脂質細胞膜嗎？",
+        options: [
+          "可以，只要分子小就可以毫無阻攔地直接穿過脂質細胞膜",
+          "不可以，因為離子帶有電荷，會被脂質細胞膜排斥，一定要走「特殊蛋白質通道」",
+          "不可以，礦物質必須先在體外被水解酶煮沸分解才能進出",
+          "礦物質不是生物所需物質，細胞膜完全不允許它接近"
+        ],
+        correct: 1,
+        dim: 4, 
+        explanation: "礦物質（例如鈉、鉀離子）分子量雖小，但因為帶有顯著電荷，無法穿過斥水性的膜核心。因此，**絕對不能直接穿透細胞膜**，必須經由黃色等特定的**「離子通道蛋白質」**協助進出。"
+      },
+      {
+        question: "8. 媽媽把切好的小黃瓜灑上大量的鹽巴，放了一陣子後，小黃瓜周邊流出了大量的水，自己也萎縮了。這種水分跨膜擴散的現象稱為？",
+        options: [
+          "滲透作用，水分由水多的地方擴散到水少的地方",
+          "主動吞噬，小黃瓜細胞主動把水吐出去",
+          "光合作用，葉綠素吸收陽光使水蒸發",
+          "破壞作用，食鹽將細胞膜完全融化導致水漏出來"
+        ],
+        correct: 0,
+        dim: 3, 
+        explanation: "水分子的擴散作用有一個專屬的名詞叫做**「滲透作用」**。當外面撒了鹽（外液濃度高、水分子相對少），細胞內的水濃度較高。水分子就會順著濃度差擴散出細胞外（水多的地方往水少的地方流），導致細胞脫水萎縮。"
       }
     ];
 
     let currentQuestionIdx = 0;
     let quizScore = 0;
     let quizActive = false;
-    let answersTimeline = []; // store results to generate radar statistics
+    let answersTimeline = []; 
 
     function startQuiz() {
       playClickSound();
@@ -1540,17 +1457,14 @@
     function showQuestion() {
       const q = quizQuestions[currentQuestionIdx];
       
-      // Update progresses
       document.getElementById('quiz-progress-text').textContent = `問題 ${currentQuestionIdx + 1} / ${quizQuestions.length}`;
       document.getElementById('quiz-score-badge').textContent = `目前得分: ${quizScore} 分`;
       
       const percent = ((currentQuestionIdx) / quizQuestions.length) * 100;
       document.getElementById('quiz-progress-bar').style.width = `${percent}%`;
 
-      // Draw question text
       document.getElementById('quiz-question-text').textContent = q.question;
 
-      // Draw options
       const container = document.getElementById('quiz-options-container');
       container.innerHTML = '';
 
@@ -1559,7 +1473,6 @@
         btn.onclick = () => selectOption(idx);
         btn.className = "w-full text-left p-4 rounded-xl border border-slate-200 hover:border-teal-500 hover:bg-teal-50/30 font-semibold text-slate-700 transition active:scale-99 text-xs md:text-sm flex items-start gap-3 group";
         
-        // Option prefix A, B, C, D
         const prefix = ['A', 'B', 'C', 'D'][idx];
         btn.innerHTML = `
           <span class="flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 group-hover:bg-teal-100 group-hover:text-teal-700 text-slate-500 font-bold flex items-center justify-center text-xs transition">
@@ -1570,7 +1483,6 @@
         container.appendChild(btn);
       });
 
-      // Hide explanation
       document.getElementById('quiz-explanation-panel').classList.add('hidden');
     }
 
@@ -1581,7 +1493,6 @@
       const q = quizQuestions[currentQuestionIdx];
       const isCorrect = (selectedIdx === q.correct);
       
-      // Track response for stats dimensions
       answersTimeline.push({
         dim: q.dim,
         correct: isCorrect
@@ -1592,7 +1503,6 @@
       const title = document.getElementById('explanation-title');
       const text = document.getElementById('explanation-text');
 
-      // Highlight options
       const buttons = document.getElementById('quiz-options-container').children;
       for (let i = 0; i < buttons.length; i++) {
         buttons[i].disabled = true;
@@ -1610,13 +1520,13 @@
       }
 
       if (isCorrect) {
-        quizScore += 10;
+        quizScore += 12.5; // 8 questions = 100 max
         playCorrectSound();
         expPanel.className = "mt-6 p-4 rounded-xl border border-green-200 bg-green-50/50 transition-all duration-300";
         icon.className = "w-7 h-7 rounded-full bg-green-500 text-white flex items-center justify-center text-sm flex-shrink-0";
         icon.innerHTML = '<i class="fas fa-check"></i>';
         title.className = "font-bold text-green-800 text-base";
-        title.textContent = "答案正確！觀念超清晰！";
+        title.textContent = "答案正確！真聰明！";
       } else {
         playWrongSound();
         expPanel.className = "mt-6 p-4 rounded-xl border border-red-200 bg-red-50/50 transition-all duration-300";
@@ -1626,11 +1536,9 @@
         title.textContent = `答錯囉！正確答案是 (${['A','B','C','D'][q.correct]})`;
       }
 
-      // Load explanation text
       text.innerHTML = q.explanation;
       expPanel.classList.remove('hidden');
 
-      // Update check button labels
       const nextBtn = document.getElementById('next-quest-btn');
       if (currentQuestionIdx === quizQuestions.length - 1) {
         nextBtn.innerHTML = `查看結算成果 <i class="fas fa-square-poll-vertical ml-1"></i>`;
@@ -1646,8 +1554,7 @@
         quizActive = true;
         showQuestion();
       } else {
-        // Quiz completed! Switch to certificate/analytics
-        showToast('特訓完成！', `恭喜你完成 10 大迷思測驗，一共獲得了 ${quizScore} 分！`, 'success');
+        showToast('特訓測驗完成！', `恭喜完成所有測驗，獲得了 ${Math.round(quizScore)} 分！`, 'success');
         switchTab('certificate');
       }
     }
@@ -1655,12 +1562,6 @@
 
   <!-- ================= LEARNING ANALYTICS & CERTIFICATE SCRIPT ================= -->
   <script>
-    // Dimensions tracking logic
-    // Dim 1: 大分子分解 (Questions 2, 6, Starch/Protein placements)
-    // Dim 2: 擴散不耗能 (Questions 1, 3, 7)
-    // Dim 3: 水分雙重通道 (Questions 4, 8, 10, Water placement)
-    // Dim 4: 通道專一性 (Questions 5, 9, Mineral placement)
-
     function updateAnalytics() {
       let dimScores = { 1: 0, 2: 0, 3: 0, 4: 0 };
       let dimCounts = { 1: 0, 2: 0, 3: 0, 4: 0 };
@@ -1699,7 +1600,6 @@
       // Set dimensions percentages dynamically
       for (let i = 1; i <= 4; i++) {
         let pct = dimCounts[i] > 0 ? Math.round((dimScores[i] / dimCounts[i]) * 100) : 0;
-        // clamp to 100 max
         pct = Math.min(100, pct);
         
         document.getElementById(`scoreDim${i}`).textContent = `${pct}%`;
@@ -1708,7 +1608,7 @@
 
       // Map to certificate stats too
       document.getElementById('certSortingScore').textContent = `${lastSortingScorePct} %`;
-      document.getElementById('certQuizScore').textContent = `${quizScore} 分`;
+      document.getElementById('certQuizScore').textContent = `${Math.round(quizScore)} 分`;
       
       const today = new Date();
       document.getElementById('certDate').textContent = `發證日期：${today.getFullYear()}/${String(today.getMonth()+1).padStart(2,'0')}/${String(today.getDate()).padStart(2,'0')}`;
@@ -1721,7 +1621,7 @@
       
       if (nameInput) {
         certName.textContent = nameInput;
-        showToast('證書已更新', `恭喜 ${nameInput} 特訓生！大師證書已製作完成。`, 'success');
+        showToast('證書已製作', `特訓生 ${nameInput} 的專屬榮譽證書製作完成！`, 'success');
       } else {
         certName.textContent = "九年級生物特訓生";
         showToast('請輸入姓名', '使用預設名稱生成證書中。', 'info');
